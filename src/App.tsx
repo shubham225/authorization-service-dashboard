@@ -1,12 +1,9 @@
 import React from 'react';
-import './App.css';
 import { RouterProvider } from 'react-router-dom';
 import { Router } from './pages/Router';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Container from '@mui/material/Container';
-import { Box } from '@mui/material';
-import { alpha } from '@mui/material';
+import { alpha, Box } from '@mui/material';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -17,10 +14,10 @@ function App() {
       <ThemeProvider theme={defaultTheme}>
         <Box component="main" 
         sx={(theme) => ({
-          backgroundImage:
-            theme.palette.mode === 'light'
-              ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
-              : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
+          // backgroundImage:
+          //   theme.palette.mode === 'light'
+          //     ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
+          //     : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
           backgroundSize: '100% 20%',
           backgroundRepeat: 'no-repeat',
           height: '100vh'
@@ -34,5 +31,3 @@ function App() {
 }
 
 export default App;
-
-//sx={{height: '100vh', width: '100%'}}
