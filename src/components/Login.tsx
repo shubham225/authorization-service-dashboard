@@ -8,18 +8,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { Captcha } from './Captcha';
 
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 type Props = {
   handleSubmit : (event: React.FormEvent<HTMLFormElement>) => void;
@@ -75,7 +63,6 @@ export default function SignIn(props : Props) {
             </Button>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </>
   );
 }

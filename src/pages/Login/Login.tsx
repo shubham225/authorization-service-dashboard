@@ -13,17 +13,16 @@ export const Login = () => {
       email: data.get('email'),
       password: data.get('password')
     });
-    navigateTo("/dashboard");
+    navigateTo("/home");
   };
 
   return (
       <Container 
         maxWidth='xs'
-        sx={{
+        sx={{ 
+          height: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          height: '-webkit-fill-available',
-          justifyContent: 'center'
+          alignItems: 'center'
         }}>
           <SignIn handleSubmit={handleSubmit} />
       </Container>

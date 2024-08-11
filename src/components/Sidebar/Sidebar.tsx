@@ -1,8 +1,9 @@
-import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
+import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 const drawerWidth = 240;
+const appbarHeight = 64;
 
 export const Sidebar = () => {
   return (
@@ -13,12 +14,12 @@ export const Sidebar = () => {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            mt: `${appbarHeight}px`
           },
         }}
         variant="permanent"
         anchor="left"
       >
-        <Toolbar />
         <Divider />
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (

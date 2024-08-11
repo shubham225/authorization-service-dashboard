@@ -1,17 +1,27 @@
-import { Box, Toolbar } from '@mui/material'
+import { BottomNavigation, Box, Divider, Typography } from '@mui/material';
+import Link from '@mui/material/Link';
 import { Outlet } from 'react-router-dom'
-import { Appbar } from '../components/Appbar/Appbar'
-import { Sidebar } from '../components/Sidebar/Sidebar'
-import { MainWindow } from './MainWindow/MainWindow'
+import { Copyright } from '../components/Copyright';
 
 export const Root = () => {
   return (
-    <>
-      <Appbar />
-      <Sidebar />
-      <MainWindow>
-        <Outlet />
-      </MainWindow>
-    </>
+    <Box 
+      sx={{
+        height: '-webkit-fill-available',
+        display: 'flex',
+        flexDirection: 'column'   
+      }}>
+        <Box flexGrow={1}>
+          <Outlet />
+        </Box>
+        <Divider />
+        <BottomNavigation showLabels 
+          sx={{
+            height: '40px',
+            pt: 1
+          }}>
+            <Copyright />
+        </BottomNavigation>
+    </Box>
   )
 }
