@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -7,11 +7,12 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="OAuth2.0 Dashboard"
+      content="OAuth2.0 server login page"
     />
     <title>OAuth2.0 Dashboard</title>
   </head>
   <body>
+    <div id="serverAddr" style="display: none" th:if="<%='$'%>{domain}"></div>
     <div id="root"></div>
   </body>
 </html>

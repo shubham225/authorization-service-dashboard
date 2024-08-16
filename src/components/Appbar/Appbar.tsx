@@ -1,7 +1,7 @@
 import { AppBar, Avatar, Box, Button, ButtonGroup, Divider, ListItemIcon, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from 'react-router-dom';
-import { Logout, PersonAdd } from '@mui/icons-material';
+import { Logout } from '@mui/icons-material';
 import KeyIcon from '@mui/icons-material/Key';
 import React from 'react';
 
@@ -25,6 +25,18 @@ export const Appbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const myAccount = () => {
+    navigateTo('/myAccount');
+  }
+
+  const changePassword = () => {
+    navigateTo('/changePassword');
+  }
+
+  const logout = () => {
+    navigateTo('/logout');
+  }
 
   return (
     <AppBar
@@ -78,7 +90,7 @@ export const Appbar = () => {
               </Box>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                   <Typography variant="h6" color="text.primary">
-                    Auth 2.0 Admin Dashboard
+                    OAuth 2.0 Admin Dashboard
                   </Typography>
               </Box>
             </Box>
@@ -94,6 +106,7 @@ export const Appbar = () => {
                   color="primary"
                   variant="outlined"
                   size="medium"
+                  onClick={myAccount}
                 >
                   Admin
                 </Button>
@@ -142,17 +155,17 @@ export const Appbar = () => {
               transformOrigin={{ horizontal: 'right', vertical: 'top' }}
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-              <MenuItem onClick={handleClose}>
+              <MenuItem onClick={myAccount}>
                 <Avatar /> My account
               </MenuItem>
               <Divider />
-              <MenuItem onClick={handleClose}>
+              <MenuItem onClick={changePassword}>
                 <ListItemIcon>
                   <KeyIcon fontSize="small" />
                 </ListItemIcon>
                 Change Password
               </MenuItem>
-              <MenuItem onClick={handleClose}>
+              <MenuItem onClick={logout} >
                 <ListItemIcon>
                   <Logout fontSize="small" />
                 </ListItemIcon>

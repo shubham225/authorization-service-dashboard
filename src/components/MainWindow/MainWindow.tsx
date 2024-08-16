@@ -1,4 +1,4 @@
-import { alpha, Box, Toolbar } from '@mui/material';
+import { Box } from '@mui/material';
 import React from 'react'
 
 interface ComponentAcceptingChildren {
@@ -7,22 +7,22 @@ interface ComponentAcceptingChildren {
 
   const drawerWidth = 240;
   const appbarHeight = 64;
+  const bottomNavHeight = 40;
 
 export const MainWindow = (props : ComponentAcceptingChildren) => {
   return (
     <>
       <Box sx={ 
-        // flexGrow: 1, p: 3, 
-        // marginLeft: `${drawerWidth}px`, 
-        // width: { sm: `calc(100% - ${drawerWidth}px)` },
         (theme) => ({
-          flexGrow: 1, p: 3, 
+          flexGrow: 1, 
           marginTop: `${appbarHeight}px`, 
           marginLeft: `${drawerWidth}px`, 
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100% - ${drawerWidth}px)` }
         })
         }>
-          {props.children}
+          <Box sx={{p: 3, mb: `${bottomNavHeight}px`}}>
+            {props.children}
+          </Box>
       </Box>
     </>
   )
