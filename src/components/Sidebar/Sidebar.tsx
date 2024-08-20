@@ -1,4 +1,5 @@
-import { Collapse, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
+import React from 'react';
+import { Collapse, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -12,10 +13,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useNavigate } from 'react-router-dom';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import React from 'react';
-
-const drawerWidth = 240;
-const appbarHeight = 64;
+import {DRAWER_WIDTH as drawerWidth, APPBAR_HEIGHT as appbarHeight} from 'constant/Style';
 
 export const Sidebar = () => {
   const navigateTo = useNavigate();

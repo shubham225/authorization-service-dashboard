@@ -1,21 +1,11 @@
 import { Delete, Edit } from '@mui/icons-material';
 import { Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Tooltip } from '@mui/material';
-import { ScopeDialog } from '../Dialog/ScopeDialog';
+import { type TScopeTableProps } from 'types/PropsTypes';
 
-const data = [
-    {
-      id : 111,
-      scope: 'client.write',
-      description: 'Client with write permission'
-    },
-    {
-      id : 222,
-      scope: 'client.read',
-      description: 'Client with read permission'
-    }
-  ]
-  
-export const ScopeTable = () => {
+
+export const ScopeTable = (props : TScopeTableProps) => {
+  const { data } = props;
+
   return (
     <>
     <TableContainer component={Paper} sx={{ minWidth: 500, maxHeight: 350, overflow: 'auto' }}>
@@ -66,7 +56,6 @@ export const ScopeTable = () => {
         onPageChange={()=> console.log("page change")}
         onRowsPerPageChange={()=> console.log("rows per page")}
       />
-    <ScopeDialog />
     </>
   )
 }

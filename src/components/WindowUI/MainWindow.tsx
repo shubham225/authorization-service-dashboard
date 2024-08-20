@@ -1,13 +1,12 @@
-import { Box } from '@mui/material';
 import React from 'react'
+import { Box } from '@mui/material';
+import {DRAWER_WIDTH as drawerWidth, 
+        APPBAR_HEIGHT as appbarHeight,
+        BOTTOMNAV_HEIGHT as bottomNavHeight} from 'constant/Style';
 
 interface ComponentAcceptingChildren {
     children: React.ReactNode;
   }
-
-  const drawerWidth = 240;
-  const appbarHeight = 64;
-  const bottomNavHeight = 40;
 
 export const MainWindow = (props : ComponentAcceptingChildren) => {
   return (

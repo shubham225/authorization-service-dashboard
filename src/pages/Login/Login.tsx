@@ -1,5 +1,5 @@
 import React from 'react'
-import SignIn from '../../components/Login'
+import SignIn from 'components/Login'
 import { Container } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 

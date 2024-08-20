@@ -1,6 +1,7 @@
 import { BottomNavigation, Box, Divider } from '@mui/material';
 import { Outlet } from 'react-router-dom'
-import { Copyright } from '../components/Copyright';
+import { Copyright } from 'components/Copyright';
+import { BOTTOMNAV_HEIGHT as bottomNavHeight} from 'constant/Style';
 
 export const Root = () => {
   return (
@@ -22,7 +23,7 @@ export const Root = () => {
           <Divider />
           <BottomNavigation showLabels 
             sx={{
-              height: '40px',
+              height: `${bottomNavHeight}px`,
               pt: 1
             }}>
               <Copyright />

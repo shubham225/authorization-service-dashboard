@@ -66,7 +66,6 @@ export const ClientTable = () => {
         onPageChange={()=> console.log("page change")}
         onRowsPerPageChange={()=> console.log("rows per page")}
       />
-    <ClientDialog />
     </>
   )
 }

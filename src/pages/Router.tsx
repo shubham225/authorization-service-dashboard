@@ -1,7 +1,5 @@
-import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import { Root } from './Root'
-import { Login } from './Login/Login'
 import { Home } from './Home/Home'
 import { PageNotFound } from './NotFound/PageNotFound'
 import { ProtectedRoute } from './ProtectedRoute'
