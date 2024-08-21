@@ -1,5 +1,6 @@
-import { Box, Button } from '@mui/material'
-import { TWindowBarProps } from 'types/PropsTypes'
+import { Box, Button } from '@mui/material';
+import { TWindowBarProps } from 'types/PropsTypes';
+import AddIcon from '@mui/icons-material/Add';
 
 export const WindowBar = (props : TWindowBarProps) => {
 
@@ -7,7 +8,7 @@ export const WindowBar = (props : TWindowBarProps) => {
 
   return (
     <Box display={'flex'} flexDirection={'row-reverse'}>
-        <Button variant='outlined' onClick={onNewButtonClick}>
+        <Button variant='contained' startIcon={<AddIcon/>} onClick={onNewButtonClick}>
         Add New
         </Button>
     </Box>

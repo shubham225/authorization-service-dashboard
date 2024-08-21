@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Logout } from '@mui/icons-material';
 import KeyIcon from '@mui/icons-material/Key';
 import React from 'react';
+import { signout } from 'services/AdminService';
+import { useAlert } from 'hooks/useAlert';
 
 const logoStyle = {
   width: '160px',
@@ -18,6 +20,8 @@ export const Appbar = () => {
   const navigateTo = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { showAlert } = useAlert();
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -35,7 +39,16 @@ export const Appbar = () => {
   }
 
   const logout = () => {
-    navigateTo('/logout');
+    logoutAsync()
+  }
+
+  const logoutAsync = async () => {
+    try {
+      let response = await signout();
+    }catch(error : any) {
+      console.log(error);
+      showAlert(error.message, error.severity, error.title);
+    }
   }
 
   return (

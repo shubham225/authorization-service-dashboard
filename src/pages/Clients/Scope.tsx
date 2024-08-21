@@ -2,6 +2,7 @@ import { Grid } from '@mui/material'
 import { ScopeDialog } from 'components/Dialog/ScopeDialog'
 import { ScopeTable } from 'components/Tables/ScopeTable'
 import { WindowBar } from 'components/WindowUI/WindowBar'
+import { useAlert } from 'hooks/useAlert'
 import { useEffect, useState } from 'react'
 import { fetchAllScopes } from 'services/ScopeService'
 import { TButtonClickEvent, type TScope } from 'types/DataTypes'
@@ -9,16 +10,30 @@ import { TButtonClickEvent, type TScope } from 'types/DataTypes'
 export const Scope = () => {
   const [data, setData] = useState<TScope[]>([]);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const { showAlert } = useAlert();
 
+  // Fetch Initial Data
   useEffect(() => {
-    const values : TScope[] = fetchAllScopes();
-    setData(values);
+    fetchAllScopsAsync();
   }, [])
 
+  const fetchAllScopsAsync = async () => {
+    try {
+      const values = await fetchAllScopes();
+      setData(values);
+    }catch(error : any) {
+      showAlert(error.message, error.severity, error.title);
+    }
+  }
+ 
   const onNewButtonClick = (e : TButtonClickEvent) => {
     e.preventDefault()
     setOpenDialog(true);
-    console.log('Button Clicked')
+  }
+
+  // Add the received data
+  const newRecordCallback = (record : TScope) => {
+    setData([...data, record]);
   }
 
   return (
@@ -30,7 +45,8 @@ export const Scope = () => {
         <ScopeTable data={data} />  
         <ScopeDialog 
           openDialog={openDialog} 
-          setOpenDialog={setOpenDialog} />
+          setOpenDialog={setOpenDialog}
+          newRecordCallback = {newRecordCallback} />
       </Grid>
     </Grid>
   )

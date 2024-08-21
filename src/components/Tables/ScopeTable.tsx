@@ -1,5 +1,5 @@
 import { Delete, Edit } from '@mui/icons-material';
-import { Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Tooltip } from '@mui/material';
+import { Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip } from '@mui/material';
 import { type TScopeTableProps } from 'types/PropsTypes';
 
 
@@ -8,7 +8,7 @@ export const ScopeTable = (props : TScopeTableProps) => {
 
   return (
     <>
-    <TableContainer component={Paper} sx={{ minWidth: 500, maxHeight: 350, overflow: 'auto' }}>
+    <TableContainer component={Paper} sx={{ minWidth: 500, maxHeight: 630, overflow: 'auto' }}>
         <Table stickyHeader >
             <TableHead>
             <TableRow>
@@ -47,15 +47,6 @@ export const ScopeTable = (props : TScopeTableProps) => {
             </TableBody>
         </Table>
     </TableContainer>
-    <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={100}
-        rowsPerPage={10}
-        page={1}
-        onPageChange={()=> console.log("page change")}
-        onRowsPerPageChange={()=> console.log("rows per page")}
-      />
     </>
   )
 }

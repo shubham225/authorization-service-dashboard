@@ -1,6 +1,6 @@
+import React from 'react'
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import React, { useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { TDialogWindowProps } from 'types/PropsTypes';
 import { TButtonClickEvent } from 'types/DataTypes';
@@ -15,16 +15,20 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export const DialogWindow = (props : TDialogWindowProps) => {
-  const {open, 
-          setOpen,
+  const { open, 
           title,
           maxWidth,
           okButtonLabel,
+          okButtonIcon,
           closeButtonLabel,
-          onOkButtonClick } = props;
+          children,
+          setOpen,
+          onOkButtonClick,
+          onCloseButtonClick } = props;
 
   const handleClose = (e : TButtonClickEvent) => {
     e.preventDefault();
+    onCloseButtonClick(e);
     setOpen(false);
   }
 
@@ -60,15 +64,17 @@ export const DialogWindow = (props : TDialogWindowProps) => {
           <CloseIcon />
         </IconButton>
         <DialogContent dividers>
-          {props.children}
+          {children}
         </DialogContent>
         <DialogActions>
           <Button autoFocus 
+            type='submit'
             variant='contained'
+            startIcon={okButtonIcon}
             onClick={onOkButtonClick} >
             {okButtonLabel}
           </Button>
-          <Button onClick={handleClose}>
+          <Button startIcon={<CloseIcon />} variant='outlined' onClick={handleClose}>
             {(closeButtonLabel) ? closeButtonLabel : "Close"}
           </Button>
         </DialogActions>
