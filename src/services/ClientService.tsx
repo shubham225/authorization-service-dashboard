@@ -1,12 +1,12 @@
-import { scopeData } from "data/DummyData"
-import { TErrorBackend, TScopeReq, type TScope } from "types/DataTypes";
+import { clientData } from "data/DummyData"
+import { TClient, TClientRequest, TErrorBackend } from "types/DataTypes";
 import { getBackendErrorMessage } from "utils/conversionHelper";
 
-export function fetchAllScopes() : Promise<TScope[]> {
+export function fetchAllClients() : Promise<TClient[]> {
     return new Promise(async (resolve, reject) => {
         try {
             // const response = await request( "GET", "/admin/exam", {});
-            resolve(scopeData);
+            resolve(clientData);
         }catch(error : any) {
             let errorM : TErrorBackend = getBackendErrorMessage(error);
             reject(errorM);
@@ -14,11 +14,11 @@ export function fetchAllScopes() : Promise<TScope[]> {
     });
 }
 
-export function createNewScope( request : TScopeReq ) : Promise<TScope> {
+export function createNewClient( request : TClientRequest ) : Promise<TClient> {
     return new Promise(async (resolve, reject) => {
         try {
             // const response = await request( "GET", "/admin/exam", {});
-            resolve({...request, id : 123});
+            resolve({...request, client_id: 'dfdfdfd'});
         }catch(error : any) {
             let errorM : TErrorBackend = getBackendErrorMessage(error);
             reject(errorM);

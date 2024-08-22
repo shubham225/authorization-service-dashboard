@@ -1,29 +1,20 @@
-import { RouterProvider } from 'react-router-dom';
-import { Router } from './pages/Router';
-import CssBaseline from '@mui/material/CssBaseline';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Box } from '@mui/material';
-import AppContextProvider from 'context/AppContext';
-
-const defaultTheme = createTheme();
+import { RouterProvider } from "react-router-dom";
+import { Router } from "./pages/Router";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Box, Drawer } from "@mui/material";
+import AppContextProvider from "context/AppContext";
+import ColorModeContextProvider from "context/ColorModeContext";
 
 function App() {
   return (
-    <div className="App">
-      <ThemeProvider theme={defaultTheme}>
-        <AppContextProvider>
-          <Box component="main" 
-            sx={(theme) => ({
-              backgroundSize: '100% 20%',
-              backgroundRepeat: 'no-repeat',
-              height: '100vh'
-            })}> 
-              <CssBaseline />
-              <RouterProvider router={Router} />
-          </Box>
-        </AppContextProvider>
-      </ThemeProvider>
-    </div>
+    <ColorModeContextProvider>
+      <AppContextProvider>
+        <CssBaseline />
+        <div className="app">
+            <RouterProvider router={Router} />
+        </div>
+      </AppContextProvider>
+    </ColorModeContextProvider>
   );
 }
 

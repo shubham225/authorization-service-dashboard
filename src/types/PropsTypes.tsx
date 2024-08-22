@@ -1,11 +1,15 @@
 import { JsxElement } from "typescript";
-import { type TOnClickEvent, type TWidth, type TScope, TScopeReq, TAlertSeverity } from "./DataTypes"
+import { type TOnClickEvent, type TWidth, type TScope, TScopeReq, TAlertSeverity, TClient, TClientRequest } from "./DataTypes"
 
 export type TWindowBarProps = {
   onNewButtonClick : TOnClickEvent
 };
 
 export type TAlertContextProps = {
+  children          : React.ReactNode,
+}
+
+export type TColorContextProps = {
   children          : React.ReactNode,
 }
 
@@ -22,6 +26,14 @@ export type TDialogWindowProps = {
   onCloseButtonClick: TOnClickEvent
 };
 
+export type TAlertSnackbarProps = {
+  open        : boolean,
+  message     : string,
+  severity    : TAlertSeverity,
+  title       : string,
+  handleClose : () => void
+}
+
 export type TScopeTableProps = {
   data : TScope[]
 };
@@ -37,10 +49,18 @@ export type TScopeDataProps = {
   setScope : React.Dispatch<React.SetStateAction<TScopeReq>>,
 }
 
-export type TAlertSnackbarProps = {
-  open        : boolean,
-  message     : string,
-  severity    : TAlertSeverity,
-  title       : string,
-  handleClose : () => void
+// Client
+export type TClientTableProps = {
+  data : TClient[]
+};
+
+export type TClientDialogProps = {
+  openDialog    : boolean,
+  setOpenDialog : React.Dispatch<React.SetStateAction<boolean>>,
+  newRecordCallback : (record: TClient) => void
+};
+
+export type TClientDataProps = {
+  client    : TClientRequest,
+  setClient : React.Dispatch<React.SetStateAction<TClientRequest>>,
 }

@@ -3,7 +3,7 @@ import { THTTPMethod } from "types/DataTypes";
 
 const address = document.getElementById("httpPath")?.innerHTML || 'http://localhost:9000';
 
-axios.defaults.baseURL = (address + '/api/V1');
+axios.defaults.baseURL = (address);
 axios.defaults.headers.post["Content-type"] = 'application/json'
 
 function request(method : THTTPMethod, url : string, data : Object) {

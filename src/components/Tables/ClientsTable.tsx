@@ -1,24 +1,14 @@
 import { Delete, Edit } from '@mui/icons-material';
-import { Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Tooltip } from '@mui/material';
-import { ClientDialog } from '../Dialog/ClientDialog';
+import { Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip } from '@mui/material';
+import { TClientTableProps } from 'types/PropsTypes';
 
-const data = [
-    {
-      id : 111,
-      scope: 'client.write',
-      description: 'Client with write permission'
-    },
-    {
-      id : 222,
-      scope: 'client.read',
-      description: 'Client with read permission'
-    }
-  ]
-  
-export const ClientTable = () => {
+
+export const ClientTable = (props : TClientTableProps) => {
+  const { data } = props;
+
   return (
     <>
-    <TableContainer component={Paper} sx={{ minWidth: 500, maxHeight: 350, overflow: 'auto' }}>
+    <TableContainer component={Paper} sx={{ minWidth: 500, maxHeight: 630, overflow: 'auto' }}>
         <Table stickyHeader >
             <TableHead>
             <TableRow>
@@ -31,12 +21,12 @@ export const ClientTable = () => {
             <TableBody>
                 {data.map((row) => (
                     <TableRow
-                    key={row.id}
+                    key={row.client_id}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                    <TableCell component="th" scope="row">{row.id}</TableCell>
-                    <TableCell >{row.scope}</TableCell>
-                    <TableCell > {row.description} </TableCell>
+                    <TableCell component="th" scope="row">{row.client_id}</TableCell>
+                    <TableCell >{row.client_name}</TableCell>
+                    <TableCell > {row.client_authentication_methods} </TableCell>
                     <TableCell align="right"> 
                         <Box>
                             <Tooltip title="Edit Record">
@@ -57,15 +47,6 @@ export const ClientTable = () => {
             </TableBody>
         </Table>
     </TableContainer>
-    <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={100}
-        rowsPerPage={10}
-        page={1}
-        onPageChange={()=> console.log("page change")}
-        onRowsPerPageChange={()=> console.log("rows per page")}
-      />
     </>
   )
 }

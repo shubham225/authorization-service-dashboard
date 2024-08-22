@@ -41,7 +41,7 @@ export const Sidebar = () => {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
-            mt: `${appbarHeight}px`
+            // mt: `${appbarHeight}px`
           },
         }}
         variant="permanent"
