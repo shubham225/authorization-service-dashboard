@@ -22,7 +22,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export const DialogWindow = (props: TDialogWindowProps) => {
+export const DialogFormWindow = (props: TDialogWindowProps) => {
   const {
     open,
     title,
@@ -63,7 +63,6 @@ export const DialogWindow = (props: TDialogWindowProps) => {
       >
         {(formik) => (
           <BootstrapDialog
-            aria-labelledby="customized-dialog-title"
             open={open}
             maxWidth={maxWidth ? maxWidth : "md"}
             PaperProps={{

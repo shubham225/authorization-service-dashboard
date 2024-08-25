@@ -1,4 +1,4 @@
-import { DialogWindow } from "../WindowUI/DialogWindow";
+import { DialogFormWindow } from "../WindowUI/DialogFormWindow";
 import { TScopeDialogProps } from "types/PropsTypes";
 import { TButtonClickEvent, TFormRequestValues } from "types/DataTypes";
 import { ScopeForm } from "components/forms/ScopeForm";
@@ -35,7 +35,7 @@ export const ScopeDialog = (props: TScopeDialogProps) => {
 
   return (
     <>
-      <DialogWindow
+      <DialogFormWindow
         open={openDialog}
         initData={initScope}
         setOpen={setOpenDialog}
@@ -49,7 +49,7 @@ export const ScopeDialog = (props: TScopeDialogProps) => {
         yupSchema={scopeSchema}
       >
         <ScopeForm />
-      </DialogWindow>
+      </DialogFormWindow>
     </>
   );
 };

@@ -6,6 +6,5 @@ export const scopeSchema = yup.object().shape({
   });
 
 export const clientSchema = yup.object().shape({
-    scope: yup.string().min(4).required("required Scope"),
-    description: yup.string().required("required Description"),
+    scopes: yup.string().min(4).required("required Scope")
   });

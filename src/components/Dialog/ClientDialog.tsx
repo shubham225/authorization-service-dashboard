@@ -1,7 +1,6 @@
-import { DialogWindow } from "../WindowUI/DialogWindow";
+import { DialogFormWindow } from "../WindowUI/DialogFormWindow";
 import { TClientDialogProps } from "types/PropsTypes";
 import { TButtonClickEvent, TFormRequestValues } from "types/DataTypes";
-import { ScopeForm } from "components/forms/ScopeForm";
 import SaveIcon from "@mui/icons-material/Save";
 import { useAlert } from "hooks/useAlert";
 import { clientSchema } from "types/YupSchema";
@@ -25,6 +24,7 @@ export const ClientDialog = (props: TClientDialogProps) => {
   const onOkButtonClick = (values: TFormRequestValues) => {
     if (values != null) {
       // Request to backend for new scope creation
+      console.log("Creating new Record",values)
       createNewClientAsync(values);
     }
   };
@@ -36,7 +36,7 @@ export const ClientDialog = (props: TClientDialogProps) => {
 
   return (
     <>
-      <DialogWindow
+      <DialogFormWindow
         open={openDialog}
         initData={initScope}
         setOpen={setOpenDialog}
@@ -50,7 +50,7 @@ export const ClientDialog = (props: TClientDialogProps) => {
         yupSchema={clientSchema}
       >
         <ClientForm />
-      </DialogWindow>
+      </DialogFormWindow>
     </>
   );
 };

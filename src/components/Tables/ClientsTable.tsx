@@ -9,11 +9,13 @@ export const ClientTable = (props : TClientTableProps) => {
   const { data } = props;
 
   return (
-    <Box height="75vh">
+    <Box height="75vh" width={"82vw"}>
         <DataGrid 
           initialState={{
             pagination: { paginationModel: { pageSize: 10 } },
           }}
+          getRowId={(row) => row.client_id}
+          disableRowSelectionOnClick
           pageSizeOptions={[10, 20]} rows={data} columns={clientColumns} />
     </Box>
   )

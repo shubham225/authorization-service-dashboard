@@ -18,7 +18,7 @@ export function createNewClient( request : TClientRequest ) : Promise<TClient> {
     return new Promise(async (resolve, reject) => {
         try {
             // const response = await request( "GET", "/admin/exam", {});
-            resolve({...request, client_id: 'dfdfdfd'});
+            resolve({...request, client_id: Math.random().toString()});
         }catch(error : any) {
             let errorM : TErrorBackend = getBackendErrorMessage(error);
             reject(errorM);

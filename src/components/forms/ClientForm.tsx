@@ -9,7 +9,7 @@ export const ClientForm = (props: TClientFormProps) => {
       <TextField
         fullWidth
         id="client_name"
-        name="Client Name"
+        name="client_name"
         value={formik?.values.client_name}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
@@ -22,13 +22,65 @@ export const ClientForm = (props: TClientFormProps) => {
       <TextField
         fullWidth
         id="authorization_grant_types"
-        name="authorization grant types"
+        name="authorization_grant_types"
         value={formik?.values.authorization_grant_types}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
         error={!!formik?.touched.authorization_grant_types && !!formik?.errors.authorization_grant_types}
         helperText={formik?.touched.authorization_grant_types && formik?.errors.authorization_grant_types}
-        label="authorization grant types"
+        label="Authorization Grant Types"
+        type="input"
+        margin="normal"
+      />
+      <TextField
+        fullWidth
+        id="client_authentication_methods"
+        name="client_authentication_methods"
+        value={formik?.values.client_authentication_methods}
+        onChange={formik?.handleChange}
+        onBlur={formik?.handleBlur}
+        error={!!formik?.touched.client_authentication_methods && !!formik?.errors.client_authentication_methods}
+        helperText={formik?.touched.client_authentication_methods && formik?.errors.client_authentication_methods}
+        label="Authorization Methods"
+        type="input"
+        margin="normal"
+      />
+      <TextField
+        fullWidth
+        id="redirect_uris"
+        name="redirect_uris"
+        value={formik?.values.redirect_uris}
+        onChange={formik?.handleChange}
+        onBlur={formik?.handleBlur}
+        error={!!formik?.touched.redirect_uris && !!formik?.errors.redirect_uris}
+        helperText={formik?.touched.redirect_uris && formik?.errors.redirect_uris}
+        label="Redirect URIs"
+        type="input"
+        margin="normal"
+      />
+      <TextField
+        fullWidth
+        id="post_logout_redirect_uris"
+        name="post_logout_redirect_uris"
+        value={formik?.values.post_logout_redirect_uris}
+        onChange={formik?.handleChange}
+        onBlur={formik?.handleBlur}
+        error={!!formik?.touched.post_logout_redirect_uris && !!formik?.errors.post_logout_redirect_uris}
+        helperText={formik?.touched.post_logout_redirect_uris && formik?.errors.post_logout_redirect_uris}
+        label="Post Logout Redirect URIs"
+        type="input"
+        margin="normal"
+      />
+      <TextField
+        fullWidth
+        id="scopes"
+        name="scopes"
+        value={formik?.values.scopes}
+        onChange={formik?.handleChange}
+        onBlur={formik?.handleBlur}
+        error={!!formik?.touched.scopes && !!formik?.errors.scopes}
+        helperText={formik?.touched.scopes && formik?.errors.scopes}
+        label="Scopes"
         type="input"
         margin="normal"
       />

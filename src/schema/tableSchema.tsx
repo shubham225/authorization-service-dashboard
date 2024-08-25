@@ -17,22 +17,38 @@ export const scopeColumns = [
 
 export const clientColumns = [
     {
-        field: "id",
-        headerName: "ID"
-    },
-    {
         field: "client_id",
         headerName: "Client ID",
-        flex: 1
+        minWidth: 150
     },
     {
         field: "client_name",
         headerName: "Client Name",
-        flex: 1
+        minWidth: 250
     },
     {
         field: "authorization_grant_types",
-        headerName: "Authorization grant types",
-        flex: 1
+        headerName: "Authorization Grant Types",
+        minWidth: 300
+    },
+    {
+        field: "client_authentication_methods",
+        headerName: "Authorization Methods",
+        minWidth: 300
+    },
+    {
+        field: "redirect_uris",
+        headerName: "Redirect URIs",
+        minWidth: 300
+    },
+    {
+        field: "post_logout_redirect_uris",
+        headerName: "Post Logout Redirect URIs",
+        minWidth: 300
+    },
+    {
+        field: "scopes",
+        headerName: "Scopes",
+        minWidth: 300
     }
   ]
