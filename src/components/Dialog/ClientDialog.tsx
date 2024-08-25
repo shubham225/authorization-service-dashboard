@@ -1,66 +1,56 @@
-import { useState } from 'react'
-import { DialogWindow } from '../WindowUI/DialogWindow'
-import { Box } from '@mui/material'
-import { TClientDialogProps } from 'types/PropsTypes'
-import { TButtonClickEvent, TClientRequest } from 'types/DataTypes'
-import { initClient } from 'constant/Initial'
-import SaveIcon from '@mui/icons-material/Save';
-import { useAlert } from 'hooks/useAlert'
-import { createNewClient } from 'services/ClientService'
-import { ClientForm } from 'components/forms/ClientForm'
+import { DialogWindow } from "../WindowUI/DialogWindow";
+import { TClientDialogProps } from "types/PropsTypes";
+import { TButtonClickEvent, TFormRequestValues } from "types/DataTypes";
+import { ScopeForm } from "components/forms/ScopeForm";
+import SaveIcon from "@mui/icons-material/Save";
+import { useAlert } from "hooks/useAlert";
+import { clientSchema } from "types/YupSchema";
+import { initScope } from "constant/Initial";
+import { createNewClient } from "services/ClientService";
+import { ClientForm } from "components/forms/ClientForm";
 
-export const ClientDialog = (props : TClientDialogProps) => {
-  const {openDialog, 
-         setOpenDialog,
-         newRecordCallback} = props;
-
-  const [clientRequest, setClientRequest] = useState<TClientRequest>(initClient);
+export const ClientDialog = (props: TClientDialogProps) => {
+  const { openDialog, setOpenDialog, newRecordCallback } = props;
   const { showAlert } = useAlert();
 
-  const createNewClientAsync = async () => {
+  const createNewClientAsync = async (value: any) => {
     try {
-      let scopeResp = await createNewClient(clientRequest);
-      newRecordCallback(scopeResp);
-    }catch(error : any) {
+      let clientResp = await createNewClient(value);
+      newRecordCallback(clientResp);
+    } catch (error: any) {
       showAlert(error.message, error.severity, error.title);
     }
-  }
+  };
 
-  // Save botton is clicked
-  const onOkButtonClick = (e : TButtonClickEvent) => {
-    e.preventDefault();
-
-    if(clientRequest != null) {
+  const onOkButtonClick = (values: TFormRequestValues) => {
+    if (values != null) {
       // Request to backend for new scope creation
-      createNewClientAsync();
+      createNewClientAsync(values);
     }
-    
-    setClientRequest(initClient);
-    setOpenDialog(false);
-  }
+  };
 
-  const onCloseButtonClick = (e : TButtonClickEvent) => {
-    setClientRequest(initClient);
-    showAlert('Close Button has been clicked', 'error', "Action Performed");
-  }
+  const onCloseButtonClick = (e: TButtonClickEvent) => {
+    console.log("tetst");
+    showAlert("Close Button has been clicked", "error", "Action Performed");
+  };
 
   return (
     <>
-        <DialogWindow
-          open = {openDialog}
-          setOpen = {setOpenDialog}
-          title = "Create New Client"
-          maxWidth = "md"
-          okButtonIcon = {<SaveIcon />}
-          okButtonLabel = "Save"
-          closeButtonLabel = "Close"
-          onOkButtonClick={onOkButtonClick}
-          onCloseButtonClick={onCloseButtonClick}
-          > 
-            <Box >
-                <ClientForm client={clientRequest} setClient={setClientRequest} />
-            </Box>
-        </DialogWindow>
+      <DialogWindow
+        open={openDialog}
+        initData={initScope}
+        setOpen={setOpenDialog}
+        title="Create New Client"
+        maxWidth="md"
+        okButtonIcon={<SaveIcon />}
+        okButtonLabel="Save"
+        closeButtonLabel="Close"
+        onOkButtonClick={onOkButtonClick}
+        onCloseButtonClick={onCloseButtonClick}
+        yupSchema={clientSchema}
+      >
+        <ClientForm />
+      </DialogWindow>
     </>
-  )
-}
+  );
+};

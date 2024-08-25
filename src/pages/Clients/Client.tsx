@@ -1,11 +1,14 @@
 import { Grid } from '@mui/material'
 import { ClientDialog } from 'components/Dialog/ClientDialog'
+import { ScopeDialog } from 'components/Dialog/ScopeDialog'
 import { ClientTable } from 'components/Tables/ClientsTable'
+import { ScopeTable } from 'components/Tables/ScopeTable'
 import { WindowBar } from 'components/WindowUI/WindowBar'
 import { useAlert } from 'hooks/useAlert'
 import { useEffect, useState } from 'react'
 import { fetchAllClients } from 'services/ClientService'
-import { TButtonClickEvent, type TClient } from 'types/DataTypes'
+import { fetchAllScopes } from 'services/ScopeService'
+import { TButtonClickEvent, TClient, type TScope } from 'types/DataTypes'
 
 export const Client = () => {
   const [data, setData] = useState<TClient[]>([]);
@@ -14,10 +17,10 @@ export const Client = () => {
 
   // Fetch Initial Data
   useEffect(() => {
-    fetchAllClientsAsync();
+    fetchAllScopsAsync();
   }, [])
 
-  const fetchAllClientsAsync = async () => {
+  const fetchAllScopsAsync = async () => {
     try {
       const values = await fetchAllClients();
       setData(values);
@@ -33,13 +36,15 @@ export const Client = () => {
 
   // Add the received data
   const newRecordCallback = (record : TClient) => {
+    console.log("received data", record);
     setData([...data, record]);
+    console.log("after receive", data);
   }
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <WindowBar onNewButtonClick={onNewButtonClick} />
+        <WindowBar onNewButtonClick={onNewButtonClick} title='Client' />
       </Grid>
       <Grid item xs={12}>
         <ClientTable data={data} />  

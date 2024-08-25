@@ -1,66 +1,55 @@
-import { useState } from 'react'
-import { DialogWindow } from '../WindowUI/DialogWindow'
-import { Box } from '@mui/material'
-import { TScopeDialogProps } from 'types/PropsTypes'
-import { TButtonClickEvent, TScopeReq } from 'types/DataTypes'
-import { ScopeForm } from 'components/forms/ScopeForm'
-import { initScope } from 'constant/Initial'
-import SaveIcon from '@mui/icons-material/Save';
-import { useAlert } from 'hooks/useAlert'
-import { createNewScope } from 'services/ScopeService'
+import { DialogWindow } from "../WindowUI/DialogWindow";
+import { TScopeDialogProps } from "types/PropsTypes";
+import { TButtonClickEvent, TFormRequestValues } from "types/DataTypes";
+import { ScopeForm } from "components/forms/ScopeForm";
+import SaveIcon from "@mui/icons-material/Save";
+import { useAlert } from "hooks/useAlert";
+import { createNewScope } from "services/ScopeService";
+import { scopeSchema } from "types/YupSchema";
+import { initScope } from "constant/Initial";
 
-export const ScopeDialog = (props : TScopeDialogProps) => {
-  const {openDialog, 
-         setOpenDialog,
-         newRecordCallback} = props;
-
-  const [scopeReq, setScopeReq] = useState<TScopeReq>(initScope);
+export const ScopeDialog = (props: TScopeDialogProps) => {
+  const { openDialog, setOpenDialog, newRecordCallback } = props;
   const { showAlert } = useAlert();
 
-  const createNewScopeAsync = async () => {
+  const createNewScopeAsync = async (value: any) => {
     try {
-      let scopeResp = await createNewScope(scopeReq);
+      let scopeResp = await createNewScope(value);
       newRecordCallback(scopeResp);
-    }catch(error : any) {
+    } catch (error: any) {
       showAlert(error.message, error.severity, error.title);
     }
-  }
+  };
 
-  // Save botton is clicked
-  const onOkButtonClick = (e : TButtonClickEvent) => {
-    e.preventDefault();
-
-    if(scopeReq != null) {
+  const onOkButtonClick = (values: TFormRequestValues) => {
+    if (values != null) {
       // Request to backend for new scope creation
-      createNewScopeAsync();
+      createNewScopeAsync(values);
     }
-    
-    setScopeReq(initScope);
-    setOpenDialog(false);
-  }
+  };
 
-  const onCloseButtonClick = (e : TButtonClickEvent) => {
-    setScopeReq(initScope);
-    showAlert('Close Button has been clicked', 'error', "Action Performed");
-  }
+  const onCloseButtonClick = (e: TButtonClickEvent) => {
+    console.log("tetst");
+    showAlert("Close Button has been clicked", "error", "Action Performed");
+  };
 
   return (
     <>
-        <DialogWindow
-          open = {openDialog}
-          setOpen = {setOpenDialog}
-          title = "Create New Scope"
-          maxWidth = "md"
-          okButtonIcon = {<SaveIcon />}
-          okButtonLabel = "Save"
-          closeButtonLabel = "Close"
-          onOkButtonClick={onOkButtonClick}
-          onCloseButtonClick={onCloseButtonClick}
-          > 
-            <Box >
-                <ScopeForm scope={scopeReq} setScope={setScopeReq} />
-            </Box>
-        </DialogWindow>
+      <DialogWindow
+        open={openDialog}
+        initData={initScope}
+        setOpen={setOpenDialog}
+        title="Create New Scope"
+        maxWidth="md"
+        okButtonIcon={<SaveIcon />}
+        okButtonLabel="Save"
+        closeButtonLabel="Close"
+        onOkButtonClick={onOkButtonClick}
+        onCloseButtonClick={onCloseButtonClick}
+        yupSchema={scopeSchema}
+      >
+        <ScopeForm />
+      </DialogWindow>
     </>
-  )
-}
+  );
+};

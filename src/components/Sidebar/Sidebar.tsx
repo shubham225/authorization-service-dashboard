@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import { Box, Collapse, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, useTheme } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -14,12 +14,21 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useNavigate } from 'react-router-dom';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import {DRAWER_WIDTH as drawerWidth, APPBAR_HEIGHT as appbarHeight} from 'constant/Style';
+import { colorTokens } from 'theme';
+
+const logoStyle = {
+  width: "160px",
+  height: "auto",
+  cursor: "pointer"
+};
 
 export const Sidebar = () => {
   const navigateTo = useNavigate();
   const [openApp, setOpenApp] = React.useState(false);
   const [openClient, setOpenClient] = React.useState(false);
   const [openUser, setOpenUser] = React.useState(false);
+  const theme = useTheme();
+  const colors = colorTokens(theme.palette.mode);
 
   const handleAppOpen = () => {
     setOpenApp(!openApp);
@@ -41,13 +50,22 @@ export const Sidebar = () => {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
-            // mt: `${appbarHeight}px`
+            background: colors.primary[400]
           },
         }}
         variant="permanent"
         anchor="left"
       >
-        <Divider />
+        <Box display='flex' my={1} justifyContent='center'
+          >
+            <img
+              src={theme.palette.mode === 'dark' ? "./imgs/app-logo-light.svg" : "./imgs/app-logo-dark.svg"}
+              style={logoStyle}
+              alt="logo of sitemark"
+              onClick={(e) => e.preventDefault()}
+            />
+        </Box>
+        <Divider variant='middle'/>
         <List>
             <ListItem key='home' disablePadding>
               <ListItemButton onClick={(e) => navigateTo('/home')}>
@@ -58,7 +76,7 @@ export const Sidebar = () => {
               </ListItemButton>
             </ListItem>
 
-            <ListItemButton onClick={handleAppOpen}>
+            {/* <ListItemButton onClick={handleAppOpen}>
               <ListItemIcon>
                 <TerminalIcon />
               </ListItemIcon>
@@ -92,16 +110,16 @@ export const Sidebar = () => {
                   <ListItemText primary="Alert" />
                 </ListItemButton>
               </List>
-            </Collapse>
+            </Collapse> */}
 
-            <ListItem key='jwt' disablePadding>
+            {/* <ListItem key='jwt' disablePadding>
               <ListItemButton onClick={(e) => navigateTo('/jwt')}>
                 <ListItemIcon>
                   <DataObjectIcon/>
                 </ListItemIcon>
                 <ListItemText primary='JWT Config' />
               </ListItemButton>
-            </ListItem>
+            </ListItem> */}
 
             <ListItemButton onClick={handleOpenClient}>
               <ListItemIcon>
@@ -131,7 +149,7 @@ export const Sidebar = () => {
               </List>
             </Collapse>
 
-            <ListItemButton onClick={handleOpenUser}>
+            {/* <ListItemButton onClick={handleOpenUser}>
               <ListItemIcon>
                 <AssignmentIndIcon />
               </ListItemIcon>
@@ -157,7 +175,7 @@ export const Sidebar = () => {
                   <ListItemText primary="User" />
                 </ListItemButton>
               </List>
-            </Collapse>
+            </Collapse> */}
         </List>
       </Drawer>
   )

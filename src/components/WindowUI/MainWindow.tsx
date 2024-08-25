@@ -10,19 +10,10 @@ interface ComponentAcceptingChildren {
 
 export const MainWindow = (props : ComponentAcceptingChildren) => {
   return (
-    <>
-      <Box sx={ 
-        (theme) => ({
-          flexGrow: 1, 
-          marginTop: `${appbarHeight}px`, 
-          marginLeft: `${drawerWidth}px`, 
-          width: { sm: `calc(100% - ${drawerWidth}px)` }
-        })
-        }>
-          <Box sx={{p: 3, mb: `${bottomNavHeight}px`}}>
+      <Box sx={{p: 3}}>
+          <Box >
             {props.children}
           </Box>
       </Box>
-    </>
   )
 }

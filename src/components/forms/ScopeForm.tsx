@@ -1,40 +1,37 @@
-import { FormControl, TextField } from '@mui/material';
-import { initScope } from 'constant/Initial';
-import React from 'react'
-import { TScopeDataProps } from 'types/PropsTypes'
+import { TextField } from "@mui/material";
+import { TScopeFormProps } from "types/PropsTypes";
 
-export const ScopeForm = (props : TScopeDataProps) => {
-    const { scope, setScope } = props;
+export const ScopeForm = (props: TScopeFormProps) => {
+  const { formik } = props;
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        e.preventDefault();
-
-        if (scope == null)
-            setScope(initScope);
-        else
-            setScope({...scope, [e.target.name] : e.target.value});
-    }
-
-    return (
-        <FormControl fullWidth>
-            <TextField 
-                fullWidth
-                name="scope"
-                value={scope?.scope}
-                onChange={handleOnChange}
-                label="Scope"
-                type="input"
-                margin="dense"
-                />
-            <TextField 
-                fullWidth
-                name="description"
-                value={scope?.description}
-                onChange={handleOnChange}
-                label="Description"
-                type="input"
-                margin="dense"
-                />
-        </FormControl>
-    )
-}
+  return (
+    <>
+      <TextField
+        fullWidth
+        id="scope"
+        name="scope"
+        value={formik?.values.scope}
+        onChange={formik?.handleChange}
+        onBlur={formik?.handleBlur}
+        error={!!formik?.touched.scope && !!formik?.errors.scope}
+        helperText={formik?.touched.scope && formik?.errors.scope}
+        label="Scope"
+        type="input"
+        margin="normal"
+      />
+      <TextField
+        fullWidth
+        id="description"
+        name="description"
+        value={formik?.values.description}
+        onChange={formik?.handleChange}
+        onBlur={formik?.handleBlur}
+        error={!!formik?.touched.description && !!formik?.errors.description}
+        helperText={formik?.touched.description && formik?.errors.description}
+        label="Description"
+        type="input"
+        margin="normal"
+      />
+    </>
+  );
+};

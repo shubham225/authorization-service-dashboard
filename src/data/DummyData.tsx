@@ -1,4 +1,4 @@
-import { TClient } from "types/DataTypes"
+import { TAuthGrantType, TClient, TClientAuthMethod } from "types/DataTypes"
 
 export const scopeData = [
     {
@@ -13,8 +13,20 @@ export const scopeData = [
     }
   ]
 
-export const clientData : TClient[] = [
+  type TClient2 = {
+    id: number,
+    client_id: string,
+    client_name: string,
+    authorization_grant_types: TAuthGrantType[],
+    client_authentication_methods: TClientAuthMethod[],
+    redirect_uris: string[],
+    post_logout_redirect_uris: string[],
+    scopes: string[]
+  };
+
+export const clientData : TClient2[] = [
     {
+      id: 1,
       client_id: "fffffff",
       client_name : "my-client",
       authorization_grant_types : ["refresh_token", "client_credentials"],
@@ -24,6 +36,7 @@ export const clientData : TClient[] = [
       scopes : ["openid", "profile", "read"]
     },
     {
+      id: 2,
       client_id: "fffffzzz",
       client_name : "my-client2",
       authorization_grant_types : ["refresh_token", "client_credentials"],

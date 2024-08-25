@@ -1,5 +1,3 @@
-import { createTheme } from "@mui/material/styles";
-import { useMemo, useState } from "react";
 import { TcolorMode } from "types/DataTypes";
 
 
@@ -21,7 +19,7 @@ export const colorTokens = (mode: TcolorMode) => ({
           100: "#d0d1d5",
           200: "#a1a4ab",
           300: "#727681",
-          400: "#434957",
+          400: "#1F1B24",//"#3C3D37", //#434957
           500: "#141b2d",
           600: "#101624",
           700: "#0c101b",
@@ -78,7 +76,7 @@ export const colorTokens = (mode: TcolorMode) => ({
           100: "#040509",
           200: "#080b12",
           300: "#0c101b",
-          400: "#f2f0f0",
+          400: "#f2f0f0", 
           500: "#141b2d",
           600: "#434957",
           700: "#727681",
@@ -130,7 +128,7 @@ export const themeSettings = (mode: TcolorMode) => {
       ...(mode === "dark"
         ? {
             primary: {
-              main: colors.primary[500],
+              main: colors.primary[200],
             },
             secondary: {
               main: colors.green[500],
@@ -141,7 +139,7 @@ export const themeSettings = (mode: TcolorMode) => {
               light: colors.grey[100],
             },
             background: {
-              default: colors.primary[500],
+              default: "#121212"//'#1E201E'//colors.primary[500],
             },
           }
         : {
@@ -163,31 +161,31 @@ export const themeSettings = (mode: TcolorMode) => {
     },
 		typography: {
 			fontFamily: ["Source Sans 3", "sans-serif"].join(","),
-			fontSize: 12,
+			// fontSize: 12,
 			h1: {
 				fontFamily: ["Source Sans 3", "sans-serif"].join(","),
-				fontSize: 40,
+				// fontSize: 40,
 			},
 			h2: {
 				fontFamily: ["Source Sans 3", "sans-serif"].join(","),
-				fontSize: 32,
+				// fontSize: 32,
 			},
 			h3: {
 				fontFamily: ["Source Sans 3", "sans-serif"].join(","),
-				fontSize: 24,
+				// fontSize: 24,
 			},
 			h4: {
 				fontFamily: ["Source Sans 3", "sans-serif"].join(","),
-				fontSize: 20,
+				// fontSize: 20,
 			},
 			h5: {
 				fontFamily: ["Source Sans 3", "sans-serif"].join(","),
-				fontSize: 16,
+				// fontSize: 16,
 			},
 			h6: {
 				fontFamily: ["Source Sans 3", "sans-serif"].join(","),
-				fontSize: 14,
+				// fontSize: 14,
 			},
-		}
+		},
   };
 };

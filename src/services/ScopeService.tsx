@@ -18,7 +18,7 @@ export function createNewScope( request : TScopeReq ) : Promise<TScope> {
     return new Promise(async (resolve, reject) => {
         try {
             // const response = await request( "GET", "/admin/exam", {});
-            resolve({...request, id : 123});
+            resolve({...request, id : Math.random()});
         }catch(error : any) {
             let errorM : TErrorBackend = getBackendErrorMessage(error);
             reject(errorM);

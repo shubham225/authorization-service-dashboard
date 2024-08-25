@@ -33,13 +33,15 @@ export const Scope = () => {
 
   // Add the received data
   const newRecordCallback = (record : TScope) => {
+    console.log("received data", record);
     setData([...data, record]);
+    console.log("after receive", data);
   }
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <WindowBar onNewButtonClick={onNewButtonClick} />
+        <WindowBar onNewButtonClick={onNewButtonClick} title='Scope' />
       </Grid>
       <Grid item xs={12}>
         <ScopeTable data={data} />  

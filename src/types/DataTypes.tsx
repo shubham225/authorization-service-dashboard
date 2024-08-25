@@ -53,3 +53,5 @@ export type TClient = {
 export type TClientRequest = Omit<TClient, "client_id">;
 
 export type TColorModeContext = { toggleColorMode: () => void; };
+
+export type TFormRequestValues = TScopeReq | TClientRequest;

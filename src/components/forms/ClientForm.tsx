@@ -1,31 +1,37 @@
-import { FormControl, TextField } from '@mui/material';
-import { initClient } from 'constant/Initial';
-import React from 'react'
-import { TClientDataProps } from 'types/PropsTypes'
+import { TextField } from "@mui/material";
+import { TClientFormProps } from "types/PropsTypes";
 
-export const ClientForm = (props : TClientDataProps) => {
-    const { client, setClient } = props;
+export const ClientForm = (props: TClientFormProps) => {
+  const { formik } = props;
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        e.preventDefault();
-
-        if (client == null)
-            setClient(initClient);
-        else
-            setClient({...client, [e.target.name] : e.target.value});
-    }
-
-    return (
-        <FormControl fullWidth>
-            <TextField 
-                fullWidth
-                name="scope"
-                value={client?.client_name}
-                onChange={handleOnChange}
-                label="Scope"
-                type="input"
-                margin="dense"
-                />
-        </FormControl>
-    )
-}
+  return (
+    <>
+      <TextField
+        fullWidth
+        id="client_name"
+        name="Client Name"
+        value={formik?.values.client_name}
+        onChange={formik?.handleChange}
+        onBlur={formik?.handleBlur}
+        error={!!formik?.touched.client_name && !!formik?.errors.client_name}
+        helperText={formik?.touched.client_name && formik?.errors.client_name}
+        label="Client Name"
+        type="input"
+        margin="normal"
+      />
+      <TextField
+        fullWidth
+        id="authorization_grant_types"
+        name="authorization grant types"
+        value={formik?.values.authorization_grant_types}
+        onChange={formik?.handleChange}
+        onBlur={formik?.handleBlur}
+        error={!!formik?.touched.authorization_grant_types && !!formik?.errors.authorization_grant_types}
+        helperText={formik?.touched.authorization_grant_types && formik?.errors.authorization_grant_types}
+        label="authorization grant types"
+        type="input"
+        margin="normal"
+      />
+    </>
+  );
+};
