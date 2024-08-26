@@ -1,36 +1,44 @@
 import { DialogFormWindow } from "../WindowUI/DialogFormWindow";
 import { TClientDialogProps } from "types/PropsTypes";
-import { TButtonClickEvent, TFormRequestValues } from "types/DataTypes";
+import { TButtonClickEvent, TClient, TFormRequestValues } from "types/DataTypes";
 import SaveIcon from "@mui/icons-material/Save";
 import { useAlert } from "hooks/useAlert";
 import { clientSchema } from "types/YupSchema";
-import { initScope } from "constant/Initial";
+import { initClient, initScope } from "constant/Initial";
 import { createNewClient } from "services/ClientService";
 import { ClientForm } from "components/forms/ClientForm";
+import ClientGeneratedDialog from "./ClientGeneratedDialog";
+import { useState } from "react";
 
 export const ClientDialog = (props: TClientDialogProps) => {
   const { openDialog, setOpenDialog, newRecordCallback } = props;
+  const [ client, setClient ] = useState<TClient>({...initClient, client_id : ''});
+  const [ newClientCreated, setNewClientCreated ] = useState<boolean>(false);
   const { showAlert } = useAlert();
 
   const createNewClientAsync = async (value: any) => {
     try {
       let clientResp = await createNewClient(value);
+      setClient(clientResp);
+      setNewClientCreated(true);
       newRecordCallback(clientResp);
     } catch (error: any) {
       showAlert(error.message, error.severity, error.title);
     }
   };
 
-  const onOkButtonClick = (values: TFormRequestValues) => {
+  const onOkButtonClick = (values: any) => {
     if (values != null) {
       // Request to backend for new scope creation
+      values.redirect_uris = typeof values?.redirect_uris === 'string' ? values?.redirect_uris.split(",") : values?.redirect_uris;
+      values.post_logout_redirect_uris = typeof values?.post_logout_redirect_uris === 'string' ? values?.post_logout_redirect_uris.split(",") : values?.post_logout_redirect_uris;
+
       console.log("Creating new Record",values)
       createNewClientAsync(values);
     }
   };
 
   const onCloseButtonClick = (e: TButtonClickEvent) => {
-    console.log("tetst");
     showAlert("Close Button has been clicked", "error", "Action Performed");
   };
 
@@ -38,7 +46,7 @@ export const ClientDialog = (props: TClientDialogProps) => {
     <>
       <DialogFormWindow
         open={openDialog}
-        initData={initScope}
+        initData={initClient}
         setOpen={setOpenDialog}
         title="Create New Client"
         maxWidth="md"
@@ -51,6 +59,7 @@ export const ClientDialog = (props: TClientDialogProps) => {
       >
         <ClientForm />
       </DialogFormWindow>
+      <ClientGeneratedDialog open={newClientCreated} setOpen={setNewClientCreated} client={client} />
     </>
   );
 };

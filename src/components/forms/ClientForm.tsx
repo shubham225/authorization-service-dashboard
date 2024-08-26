@@ -1,8 +1,15 @@
 import { TextField } from "@mui/material";
+import MultipleSelect from "components/MultipleSelect";
+import { authorizationGrantType, clientAuthenticationMethods } from "constant/Enums";
 import { TClientFormProps } from "types/PropsTypes";
 
 export const ClientForm = (props: TClientFormProps) => {
   const { formik } = props;
+
+  const scopes = [
+    "ADMIN",
+    "USER"
+  ];
 
   return (
     <>
@@ -19,31 +26,27 @@ export const ClientForm = (props: TClientFormProps) => {
         type="input"
         margin="normal"
       />
-      <TextField
-        fullWidth
+      <MultipleSelect 
         id="authorization_grant_types"
         name="authorization_grant_types"
         value={formik?.values.authorization_grant_types}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
         error={!!formik?.touched.authorization_grant_types && !!formik?.errors.authorization_grant_types}
-        helperText={formik?.touched.authorization_grant_types && formik?.errors.authorization_grant_types}
         label="Authorization Grant Types"
-        type="input"
         margin="normal"
+        enums={authorizationGrantType}
       />
-      <TextField
-        fullWidth
+      <MultipleSelect 
         id="client_authentication_methods"
         name="client_authentication_methods"
         value={formik?.values.client_authentication_methods}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
         error={!!formik?.touched.client_authentication_methods && !!formik?.errors.client_authentication_methods}
-        helperText={formik?.touched.client_authentication_methods && formik?.errors.client_authentication_methods}
         label="Authorization Methods"
-        type="input"
         margin="normal"
+        enums={clientAuthenticationMethods}
       />
       <TextField
         fullWidth
@@ -71,18 +74,16 @@ export const ClientForm = (props: TClientFormProps) => {
         type="input"
         margin="normal"
       />
-      <TextField
-        fullWidth
+      <MultipleSelect 
         id="scopes"
         name="scopes"
         value={formik?.values.scopes}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
         error={!!formik?.touched.scopes && !!formik?.errors.scopes}
-        helperText={formik?.touched.scopes && formik?.errors.scopes}
         label="Scopes"
-        type="input"
         margin="normal"
+        enums={scopes}
       />
     </>
   );

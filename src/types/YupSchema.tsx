@@ -1,10 +1,12 @@
 import * as yup from "yup";
 
 export const scopeSchema = yup.object().shape({
-    scope: yup.string().min(4).required("required Scope"),
-    description: yup.string().required("required Description"),
-  });
+  scope: yup.string().min(4).required("required Scope"),
+  description: yup.string().required("required Description"),
+});
 
 export const clientSchema = yup.object().shape({
-    scopes: yup.string().min(4).required("required Scope")
-  });
+  authorization_grant_types: yup.array().required("at least one grant type required"),
+  client_authentication_methods: yup.array().required("at least one method required"),
+  scopes: yup.array().required("required Scope"),
+});

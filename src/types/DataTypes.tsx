@@ -37,11 +37,12 @@ export type TScope = {
 export type TScopeReq = Omit<TScope, "id">;
 
 // Client
-export type TAuthGrantType = 'refresh_token' | 'client_credentials';
+export type TAuthGrantType = 'refresh_token' | 'client_credentials' | 'authorization_code';
 export type TClientAuthMethod = 'client_secret_basic';
 
 export type TClient = {
   client_id: string,
+  client_secret?: string,
   client_name: string,
   authorization_grant_types: TAuthGrantType[],
   client_authentication_methods: TClientAuthMethod[],
