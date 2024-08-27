@@ -9,8 +9,9 @@ export const getBackendErrorMessage = (error : any) : TErrorBackend => {
             severity : "error"
         }
     }else {
+        console.log(error);
         errorM = {
-            title: error.name + " [" + error.code + "]",
+            title: error.code,
             message : error.message,
             severity : "error"
         }

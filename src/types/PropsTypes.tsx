@@ -1,4 +1,3 @@
-import { SelectChangeEvent } from "@mui/material";
 import {
   type TOnClickEvent,
   type TWidth,
@@ -10,7 +9,6 @@ import {
   type TFormRequestValues,
 } from "./DataTypes";
 import { FormikProps } from "formik";
-import { ReactNode } from "react";
 
 export type TWindowBarProps = {
   onNewButtonClick: TOnClickEvent;
@@ -86,19 +84,24 @@ export type TClientFormProps = {
 };
 
 export type TMultiSelectProps = {
-  id?:         string;
-  name:        string;
-  value?:       string[];
-  onChange?:    React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined | any;
-  onBlur?:     React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
-  error?:      boolean;
-  label?:      React.ReactNode;
-  margin?:     "normal" | "dense" | "none" ;
-  enums:       string[];
+  id?: string;
+  name: string;
+  value?: string[];
+  onChange?:
+    | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    | undefined
+    | any;
+  onBlur?:
+    | React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    | undefined;
+  error?: boolean;
+  label?: React.ReactNode;
+  margin?: "normal" | "dense" | "none";
+  enums: string[];
 };
 
 export type TClientCreatedDialog = {
   client: TClient;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};

@@ -1,10 +1,13 @@
 import { DialogFormWindow } from "../WindowUI/DialogFormWindow";
 import { TClientDialogProps } from "types/PropsTypes";
-import { TButtonClickEvent, TClient, TFormRequestValues } from "types/DataTypes";
+import {
+  TButtonClickEvent,
+  TClient,
+} from "types/DataTypes";
 import SaveIcon from "@mui/icons-material/Save";
 import { useAlert } from "hooks/useAlert";
 import { clientSchema } from "types/YupSchema";
-import { initClient, initScope } from "constant/Initial";
+import { initClient } from "constant/Initial";
 import { createNewClient } from "services/ClientService";
 import { ClientForm } from "components/forms/ClientForm";
 import ClientGeneratedDialog from "./ClientGeneratedDialog";
@@ -12,8 +15,11 @@ import { useState } from "react";
 
 export const ClientDialog = (props: TClientDialogProps) => {
   const { openDialog, setOpenDialog, newRecordCallback } = props;
-  const [ client, setClient ] = useState<TClient>({...initClient, client_id : ''});
-  const [ newClientCreated, setNewClientCreated ] = useState<boolean>(false);
+  const [client, setClient] = useState<TClient>({
+    ...initClient,
+    client_id: "",
+  });
+  const [newClientCreated, setNewClientCreated] = useState<boolean>(false);
   const { showAlert } = useAlert();
 
   const createNewClientAsync = async (value: any) => {
@@ -30,10 +36,16 @@ export const ClientDialog = (props: TClientDialogProps) => {
   const onOkButtonClick = (values: any) => {
     if (values != null) {
       // Request to backend for new scope creation
-      values.redirect_uris = typeof values?.redirect_uris === 'string' ? values?.redirect_uris.split(",") : values?.redirect_uris;
-      values.post_logout_redirect_uris = typeof values?.post_logout_redirect_uris === 'string' ? values?.post_logout_redirect_uris.split(",") : values?.post_logout_redirect_uris;
+      values.redirect_uris =
+        typeof values?.redirect_uris === "string"
+          ? values?.redirect_uris.split(",")
+          : values?.redirect_uris;
+      values.post_logout_redirect_uris =
+        typeof values?.post_logout_redirect_uris === "string"
+          ? values?.post_logout_redirect_uris.split(",")
+          : values?.post_logout_redirect_uris;
 
-      console.log("Creating new Record",values)
+      console.log("Creating new Record", values);
       createNewClientAsync(values);
     }
   };
@@ -59,7 +71,11 @@ export const ClientDialog = (props: TClientDialogProps) => {
       >
         <ClientForm />
       </DialogFormWindow>
-      <ClientGeneratedDialog open={newClientCreated} setOpen={setNewClientCreated} client={client} />
+      <ClientGeneratedDialog
+        open={newClientCreated}
+        setOpen={setNewClientCreated}
+        client={client}
+      />
     </>
   );
 };

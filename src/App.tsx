@@ -1,7 +1,6 @@
 import { RouterProvider } from "react-router-dom";
 import { Router } from "./pages/Router";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Box, Drawer } from "@mui/material";
 import AppContextProvider from "context/AppContext";
 import ColorModeContextProvider from "context/ColorModeContext";
 

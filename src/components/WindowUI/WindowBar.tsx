@@ -19,19 +19,23 @@ export const WindowBar = (props: TWindowBarProps) => {
         >
           {title}
         </Typography>
-        {subtitle && <Divider variant="middle" orientation="vertical" sx={{mx: 2}}/>}
+        {subtitle && (
+          <Divider variant="middle" orientation="vertical" sx={{ mx: 2 }} />
+        )}
         <Typography variant="subtitle1" color={colors.green[400]}>
           {subtitle}
         </Typography>
       </Box>
-      <Button
-        variant="contained"
-        size="large"
-        startIcon={<AddIcon />}
-        onClick={onNewButtonClick}
-      >
-        Add New
-      </Button>
+      <Box>
+        <Button
+          variant="contained"
+          size="medium"
+          startIcon={<AddIcon />}
+          onClick={onNewButtonClick}
+        >
+          Add New
+        </Button>
+      </Box>
     </Box>
   );
 };

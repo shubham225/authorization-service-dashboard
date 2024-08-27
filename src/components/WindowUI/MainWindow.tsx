@@ -10,7 +10,7 @@ interface ComponentAcceptingChildren {
 
 export const MainWindow = (props : ComponentAcceptingChildren) => {
   return (
-      <Box sx={{p: 3}}>
+      <Box sx={{p: 3, mt: 8}}>
           <Box >
             {props.children}
           </Box>

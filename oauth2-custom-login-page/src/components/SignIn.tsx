@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { Captcha } from './Captcha';
 import AlertSnackBar from './AlertSnackBar';
 
 
@@ -16,14 +15,15 @@ type Props = {
 type AlertProps = {
   open : boolean,
   severity : 'error' | 'success',
-  message : string
+  message : string,
+  title: string
 }
 
 export default function SignIn(props : Props) {
-  const [alert, setAlert] = React.useState<AlertProps>({open : false, message : '', severity : 'error'});
+  const [alert, setAlert] = React.useState<AlertProps>({open : false, message : '', severity : 'error', title: ''});
 
   const handleClose = () => {
-    setAlert({open : false, message : '', severity : 'error'})
+    setAlert({open : false, message : '', severity : 'error', title: ''})
   }
 
   React.useEffect(() =>
@@ -36,8 +36,9 @@ export default function SignIn(props : Props) {
       setAlert(
         {
           open : true, 
-          message : (error != null) ? 'Username/Password is wrong.' : 'User Successfully logged out.', 
-          severity : (error != null) ? 'error' : 'success'
+          message : (error != null) ? 'Invalid username or password.' : 'User Successfully logged out.', 
+          severity : (error != null) ? 'error' : 'success',
+          title: (error != null) ? 'Login failed' : 'Success'
         }
       );
     } 
@@ -50,8 +51,7 @@ export default function SignIn(props : Props) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '-webkit-fill-available',
-            mt: '100px'
+            mt: '20vh'
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -68,7 +68,6 @@ export default function SignIn(props : Props) {
               id="username"
               label="Username"
               name="username"
-              placeholder='username'
               autoComplete="email"
               autoFocus
             />
@@ -80,20 +79,22 @@ export default function SignIn(props : Props) {
               label="Password"
               type="password"
               id="password"
-              placeholder='password'
               autoComplete="current-password"
             />
             <Button
-              type="submit"
               fullWidth
+              type="submit"
+              size="large"
+              color="primary"
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, fontWeight: 'bold' }}
             >
               Sign In
             </Button>
           </Box>
           <AlertSnackBar 
             open= {alert.open}
+            title= {alert.title}
             message= {alert.message}
             severity= {alert.severity}
             handleClose={() => handleClose()}
