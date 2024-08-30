@@ -1,21 +1,20 @@
 import { Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import React from 'react';
-import { scopeColumns } from 'schema/tableSchema';
-import { type TScopeTableProps } from 'types/PropsTypes';
+import { userColumns } from 'schema/tableSchema';
+import { TUserTableProps } from 'types/PropsTypes';
 
 
-export const ScopeTable = (props : TScopeTableProps) => {
+export const UserTable = (props : TUserTableProps) => {
   const { data } = props;
 
   return (
-    <Box height="75vh">
+    <Box height="75vh" width={"82vw"}>
         <DataGrid 
           initialState={{
             pagination: { paginationModel: { pageSize: 10 } },
           }}
           disableRowSelectionOnClick
-          pageSizeOptions={[10, 20]} rows={data} columns={scopeColumns} />
+          pageSizeOptions={[10, 20]} rows={data} columns={userColumns} />
     </Box>
   )
 }

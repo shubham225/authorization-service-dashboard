@@ -1,8 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, styled, Typography } from '@mui/material';
 import React from 'react'
-import { TClient } from 'types/DataTypes'
 import CloseIcon from "@mui/icons-material/Close";
-import { TClientCreatedDialog } from 'types/PropsTypes';
+import { TClientCreatedDialogProps } from 'types/PropsTypes';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -13,7 +12,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const ClientGeneratedDialog = (props : TClientCreatedDialog) => {
+const ClientGeneratedDialog = (props : TClientCreatedDialogProps) => {
   const { client, open, setOpen } = props;
 
   const handleClose = () => {

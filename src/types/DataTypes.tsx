@@ -13,6 +13,8 @@ export type TAlert = {
   title: string;
 };
 
+export type TErrorBackend = Omit<TAlert, "open">;
+
 export type TAppContext = {
   alert: TAlert;
 };
@@ -22,10 +24,9 @@ export type TAppContextType = {
   setAppContext: React.Dispatch<React.SetStateAction<TAppContext>>;
 };
 
-export type TErrorBackend = Omit<TAlert, "open">;
+export type TColorModeContext = { toggleColorMode: () => void };
 
 // Scope
-
 export type TScope = {
   id: number;
   scope: string;
@@ -54,6 +55,25 @@ export type TClient = {
 
 export type TClientRequest = Omit<TClient, "client_id">;
 
-export type TColorModeContext = { toggleColorMode: () => void };
+// Role
+export type TRole = {
+  id: number;
+  role: string;
+  description: string;
+};
 
-export type TFormRequestValues = TScopeReq | TClientRequest;
+export type TRoleReq = Omit<TRole, "id">;
+
+// User
+export type TUser = {
+  id: number;
+  username: string;
+  email: string;
+  mobile: string;
+  roles: string[];
+};
+
+export type TUserReq = Omit<TUser, "id">;
+
+// Common
+export type TFormRequestValues = TScopeReq | TClientRequest | TRoleReq | TUserReq;

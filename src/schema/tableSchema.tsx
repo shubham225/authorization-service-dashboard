@@ -52,3 +52,42 @@ export const clientColumns = [
         minWidth: 300
     }
   ]
+
+  export const roleColumns = [
+    {
+        field: "id",
+        headerName: "ID"
+    },
+    {
+        field: "role",
+        headerName: "Role",
+        flex: 1
+    },
+    {
+        field: "description",
+        headerName: "Description",
+        flex: 1
+    }
+  ]
+
+  export const userColumns = [
+    {
+        field: "id",
+        headerName: "ID"
+    },
+    {
+        field: "username",
+        headerName: "Username",
+        flex: 1
+    },
+    {
+        field: "email",
+        headerName: "E-Mail",
+        flex: 1
+    },
+    {
+        field: "mobile",
+        headerName: "Mobile",
+        flex: 1
+    }
+  ]

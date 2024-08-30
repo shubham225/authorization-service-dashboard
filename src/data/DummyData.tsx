@@ -1,6 +1,6 @@
-import { TAuthGrantType, TClient, TClientAuthMethod } from "types/DataTypes"
+import { TClient, TRole, TScope } from "types/DataTypes"
 
-export const scopeData = [
+export const scopeData : TScope[] = [
     {
       id : 111,
       scope: 'client.write',
@@ -31,5 +31,18 @@ export const clientData : TClient[] = [
       redirect_uris : ["https://oauth.pstmn.io/v1/callback", "https://localhost:9000/login"],
       post_logout_redirect_uris : [],
       scopes : ["openid", "profile", "read"]
+    }
+  ]
+
+  export const roleData : TRole[] = [
+    {
+      id : 111,
+      role: 'ADMIN',
+      description: 'Admin User'
+    },
+    {
+      id : 222,
+      role: 'USER',
+      description: 'Normal User'
     }
   ]

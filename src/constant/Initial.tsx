@@ -1,4 +1,4 @@
-import { TAlert, TAppContext, TClientRequest, TScopeReq } from "types/DataTypes";
+import { TAlert, TAppContext, TClientRequest, TRoleReq, TScopeReq } from "types/DataTypes";
 
 export const initScope : TScopeReq = {scope : '', description : ''}
 
@@ -21,3 +21,5 @@ export const initClient : TClientRequest = {
     post_logout_redirect_uris : [],
     scopes : []
 }
+
+export const initRole : TRoleReq = {role : '', description : ''}

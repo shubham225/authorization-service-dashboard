@@ -121,6 +121,7 @@ export const Sidebar = () => {
               </ListItemButton>
             </ListItem> */}
 
+            {/* Client Management */}
             <ListItemButton onClick={handleOpenClient}>
               <ListItemIcon>
                 <PeopleAltIcon />
@@ -149,7 +150,8 @@ export const Sidebar = () => {
               </List>
             </Collapse>
 
-            {/* <ListItemButton onClick={handleOpenUser}>
+            {/* User Management */}
+            <ListItemButton onClick={handleOpenUser}>
               <ListItemIcon>
                 <AssignmentIndIcon />
               </ListItemIcon>
@@ -175,7 +177,7 @@ export const Sidebar = () => {
                   <ListItemText primary="User" />
                 </ListItemButton>
               </List>
-            </Collapse> */}
+            </Collapse>
         </List>
       </Drawer>
   )

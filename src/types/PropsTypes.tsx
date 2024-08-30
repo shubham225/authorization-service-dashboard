@@ -7,15 +7,14 @@ import {
   type TClient,
   type TClientRequest,
   type TFormRequestValues,
+  TRole,
+  TRoleReq,
+  TUser,
+  TUserReq,
 } from "./DataTypes";
 import { FormikProps } from "formik";
 
-export type TWindowBarProps = {
-  onNewButtonClick: TOnClickEvent;
-  title?: string;
-  subtitle?: string;
-};
-
+// Common
 export type TAlertContextProps = {
   children: React.ReactNode;
 };
@@ -26,6 +25,14 @@ export type TColorContextProps = {
 
 export type TOkButtonClicked = (values: TFormRequestValues) => void;
 
+// Window Bar Component
+export type TWindowBarProps = {
+  onNewButtonClick: TOnClickEvent;
+  title?: string;
+  subtitle?: string;
+};
+
+// Dialog Component
 export type TDialogWindowProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -41,6 +48,7 @@ export type TDialogWindowProps = {
   onCloseButtonClick: TOnClickEvent;
 };
 
+// SnackBar Component
 export type TAlertSnackbarProps = {
   open: boolean;
   message: string;
@@ -49,6 +57,25 @@ export type TAlertSnackbarProps = {
   handleClose: () => void;
 };
 
+// MultiSelect Component
+export type TMultiSelectProps = {
+  id?: string;
+  name: string;
+  value?: string[];
+  onChange?:
+    | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    | undefined
+    | any;
+  onBlur?:
+    | React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    | undefined;
+  error?: boolean;
+  label?: React.ReactNode;
+  margin?: "normal" | "dense" | "none";
+  enums: string[];
+};
+
+// Scope
 export type TScopeTableProps = {
   data: TScope[];
 };
@@ -74,34 +101,42 @@ export type TClientDialogProps = {
   newRecordCallback: (record: TClient) => void;
 };
 
-export type TClientDataProps = {
-  client: TClientRequest;
-  setClient: React.Dispatch<React.SetStateAction<TClientRequest>>;
-};
-
 export type TClientFormProps = {
   formik?: FormikProps<TClientRequest>;
 };
 
-export type TMultiSelectProps = {
-  id?: string;
-  name: string;
-  value?: string[];
-  onChange?:
-    | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-    | undefined
-    | any;
-  onBlur?:
-    | React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
-    | undefined;
-  error?: boolean;
-  label?: React.ReactNode;
-  margin?: "normal" | "dense" | "none";
-  enums: string[];
-};
-
-export type TClientCreatedDialog = {
+export type TClientCreatedDialogProps = {
   client: TClient;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+// Roles
+export type TRoleTableProps = {
+  data: TRole[];
+};
+
+export type TRoleDialogProps = {
+  openDialog: boolean;
+  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  newRecordCallback: (record: TRole) => void;
+};
+
+export type TRoleFormProps = {
+  formik?: FormikProps<TRoleReq>;
+};
+
+// User
+export type TUserTableProps = {
+  data: TUser[];
+};
+
+export type TUserDialogProps = {
+  openDialog: boolean;
+  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  newRecordCallback: (record: TUser) => void;
+};
+
+export type TUserFormProps = {
+  formik?: FormikProps<TUserReq>;
 };

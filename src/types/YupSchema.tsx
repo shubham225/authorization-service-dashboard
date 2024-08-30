@@ -10,3 +10,8 @@ export const clientSchema = yup.object().shape({
   client_authentication_methods: yup.array().required("at least one method required"),
   scopes: yup.array().required("required Scope"),
 });
+
+export const roleSchema = yup.object().shape({
+  role: yup.string().min(4).required("required Role"),
+  description: yup.string().required("required Description"),
+});
