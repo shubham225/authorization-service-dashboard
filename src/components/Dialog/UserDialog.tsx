@@ -1,21 +1,22 @@
 import { DialogFormWindow } from "../WindowUI/DialogFormWindow";
-import { TRoleDialogProps, TUserDialogProps } from "types/PropsTypes";
+import { TUserDialogProps } from "types/PropsTypes";
 import { TButtonClickEvent, TFormRequestValues } from "types/DataTypes";
 import SaveIcon from "@mui/icons-material/Save";
 import { useAlert } from "hooks/useAlert";
-import { roleSchema } from "types/YupSchema";
-import { initRole } from "constant/Initial";
-import { createNewRole } from "services/RoleService";
+import { userSchema } from "types/YupSchema";
+import { initUser } from "constant/Initial";
 import { RoleForm } from "components/forms/RoleForm";
+import { createNewUser } from "services/UserService";
+import { UserForm } from "components/forms/UserForm";
 
 export const UserDialog = (props: TUserDialogProps) => {
   const { openDialog, setOpenDialog, newRecordCallback } = props;
   const { showAlert } = useAlert();
 
-  const createNewRoleAsync = async (value: any) => {
+  const createNewUserAsync = async (value: any) => {
     try {
-      let roleResp = await createNewRole(value);
-      newRecordCallback(roleResp);
+      let userResp = await createNewUser(value);
+      newRecordCallback(userResp);
     } catch (error: any) {
       showAlert(error.message, error.severity, error.title);
     }
@@ -24,7 +25,7 @@ export const UserDialog = (props: TUserDialogProps) => {
   const onOkButtonClick = (values: TFormRequestValues) => {
     if (values != null) {
       // Request to backend for new role creation
-      createNewRoleAsync(values);
+      createNewUserAsync(values);
     }
   };
 
@@ -36,18 +37,18 @@ export const UserDialog = (props: TUserDialogProps) => {
     <>
       <DialogFormWindow
         open={openDialog}
-        initData={initRole}
+        initData={initUser}
         setOpen={setOpenDialog}
-        title="Create New Role"
+        title="Create New User"
         maxWidth="md"
         okButtonIcon={<SaveIcon />}
         okButtonLabel="Save"
         closeButtonLabel="Close"
         onOkButtonClick={onOkButtonClick}
         onCloseButtonClick={onCloseButtonClick}
-        yupSchema={roleSchema}
+        yupSchema={userSchema}
       >
-        <RoleForm />
+        <UserForm />
       </DialogFormWindow>
     </>
   );

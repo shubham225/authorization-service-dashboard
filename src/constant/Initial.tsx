@@ -1,4 +1,4 @@
-import { TAlert, TAppContext, TClientRequest, TRoleReq, TScopeReq } from "types/DataTypes";
+import { TAlert, TAppContext, TClientRequest, TRoleReq, TScopeReq, TUserReq } from "types/DataTypes";
 
 export const initScope : TScopeReq = {scope : '', description : ''}
 
@@ -22,4 +22,6 @@ export const initClient : TClientRequest = {
     scopes : []
 }
 
-export const initRole : TRoleReq = {role : '', description : ''}
+export const initRole : TRoleReq = {role : '', description : ''};
+
+export const initUser : TUserReq = {username : '', email : '', mobile: '', roles: []};

@@ -1,4 +1,4 @@
-import { TClient, TRole, TScope } from "types/DataTypes"
+import { TClient, TRole, TScope, TUser } from "types/DataTypes"
 
 export const scopeData : TScope[] = [
     {
@@ -45,4 +45,21 @@ export const clientData : TClient[] = [
       role: 'USER',
       description: 'Normal User'
     }
+  ]
+
+  export const userData : TUser[] = [
+    {
+      id : 112,
+      username : 'ADMIN',
+      email: 'admin@gmail.com',
+      mobile: "9876543210",
+      roles: ["ADMIN", "USER"]
+    },
+    {
+      id : 111,
+      username : 'USER',
+      email: 'user@gmail.com',
+      mobile: "9876543210",
+      roles: ["USER"]
+    },
   ]

@@ -13,7 +13,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useNavigate } from 'react-router-dom';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import {DRAWER_WIDTH as drawerWidth, APPBAR_HEIGHT as appbarHeight} from 'constant/Style';
+import {DRAWER_WIDTH as drawerWidth } from 'constant/Style';
 import { colorTokens } from 'theme';
 
 const logoStyle = {

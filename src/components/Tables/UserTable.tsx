@@ -8,7 +8,7 @@ export const UserTable = (props : TUserTableProps) => {
   const { data } = props;
 
   return (
-    <Box height="75vh" width={"82vw"}>
+    <Box height="75vh">
         <DataGrid 
           initialState={{
             pagination: { paginationModel: { pageSize: 10 } },

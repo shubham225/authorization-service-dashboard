@@ -3,13 +3,14 @@ import { DataGrid } from '@mui/x-data-grid';
 import React from 'react';
 import { clientColumns, scopeColumns } from 'schema/tableSchema';
 import { TClientTableProps, type TScopeTableProps } from 'types/PropsTypes';
+import {DRAWER_WIDTH as drawerWidth } from 'constant/Style';
 
 
 export const ClientTable = (props : TClientTableProps) => {
   const { data } = props;
 
   return (
-    <Box height="75vh" width={"82vw"}>
+    <Box height="75vh">
         <DataGrid 
           initialState={{
             pagination: { paginationModel: { pageSize: 10 } },

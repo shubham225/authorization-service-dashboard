@@ -15,3 +15,8 @@ export const roleSchema = yup.object().shape({
   role: yup.string().min(4).required("required Role"),
   description: yup.string().required("required Description"),
 });
+
+export const userSchema = yup.object().shape({
+  username: yup.string().min(4).required("required Role"),
+  email: yup.string().required("required Description"),
+});

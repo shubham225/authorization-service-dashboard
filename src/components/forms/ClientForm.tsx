@@ -6,9 +6,10 @@ import { TClientFormProps } from "types/PropsTypes";
 export const ClientForm = (props: TClientFormProps) => {
   const { formik } = props;
 
+  // Read this from backend
   const scopes = [
-    "ADMIN",
-    "USER"
+    "client.write",
+    "client.read"
   ];
 
   return (
