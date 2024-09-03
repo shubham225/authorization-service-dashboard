@@ -38,14 +38,17 @@ export const DialogFormWindow = (props: TDialogWindowProps) => {
     onCloseButtonClick,
   } = props;
 
-  const handleSubmit = (value : TScopeReq, formik : FormikHelpers<TScopeReq>) => {
+  const handleSubmit = (value: TScopeReq, formik: FormikHelpers<TScopeReq>) => {
     onOkButtonClick(value);
-    
+
     formik.resetForm();
     setOpen(false);
-  }
+  };
 
-  const handleClose = (e: TButtonClickEvent, formik : FormikProps<TScopeReq>) => {
+  const handleClose = (
+    e: TButtonClickEvent,
+    formik: FormikProps<TScopeReq>
+  ) => {
     e.preventDefault();
 
     onCloseButtonClick(e);
@@ -81,7 +84,7 @@ export const DialogFormWindow = (props: TDialogWindowProps) => {
             </DialogTitle>
             <IconButton
               aria-label="close"
-              onClick={e => handleClose(e, formik)}
+              onClick={(e) => handleClose(e, formik)}
               sx={{
                 position: "absolute",
                 right: 8,
@@ -107,7 +110,12 @@ export const DialogFormWindow = (props: TDialogWindowProps) => {
               >
                 {okButtonLabel}
               </Button>
-              <Button startIcon={<CloseIcon />} variant="outlined" type="reset" onClick={e => handleClose(e, formik)}>
+              <Button
+                startIcon={<CloseIcon />}
+                variant="outlined"
+                type="reset"
+                onClick={(e) => handleClose(e, formik)}
+              >
                 {closeButtonLabel ? closeButtonLabel : "Close"}
               </Button>
             </DialogActions>

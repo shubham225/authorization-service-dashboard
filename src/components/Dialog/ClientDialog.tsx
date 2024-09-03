@@ -17,7 +17,7 @@ export const ClientDialog = (props: TClientDialogProps) => {
   const { openDialog, setOpenDialog, newRecordCallback } = props;
   const [client, setClient] = useState<TClient>({
     ...initClient,
-    client_id: "",
+    id: "",
   });
   const [newClientCreated, setNewClientCreated] = useState<boolean>(false);
   const { showAlert } = useAlert();
@@ -36,14 +36,14 @@ export const ClientDialog = (props: TClientDialogProps) => {
   const onOkButtonClick = (values: any) => {
     if (values != null) {
       // Request to backend for new scope creation
-      values.redirect_uris =
-        typeof values?.redirect_uris === "string"
-          ? values?.redirect_uris.split(",")
-          : values?.redirect_uris;
-      values.post_logout_redirect_uris =
-        typeof values?.post_logout_redirect_uris === "string"
-          ? values?.post_logout_redirect_uris.split(",")
-          : values?.post_logout_redirect_uris;
+      values.redirectUris =
+        typeof values?.redirectUris === "string"
+          ? values?.redirectUris.split(",")
+          : values?.redirectUris;
+      values.postLogoutRedirectUris =
+        typeof values?.postLogoutRedirectUris === "string"
+          ? values?.postLogoutRedirectUris.split(",")
+          : values?.postLogoutRedirectUris;
 
       console.log("Creating new Record", values);
       createNewClientAsync(values);

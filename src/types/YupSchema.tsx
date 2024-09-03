@@ -6,8 +6,12 @@ export const scopeSchema = yup.object().shape({
 });
 
 export const clientSchema = yup.object().shape({
-  authorization_grant_types: yup.array().required("at least one grant type required"),
-  client_authentication_methods: yup.array().required("at least one method required"),
+  authorizationGrantTypes: yup
+    .array()
+    .required("at least one grant type required"),
+  clientAuthenticationMethods: yup
+    .array()
+    .required("at least one method required"),
   scopes: yup.array().required("required Scope"),
 });
 
@@ -17,6 +21,7 @@ export const roleSchema = yup.object().shape({
 });
 
 export const userSchema = yup.object().shape({
-  username: yup.string().min(4).required("required Role"),
-  email: yup.string().required("required Description"),
+  username: yup.string().min(4).required("required"),
+  password: yup.string().min(4).required("required"),
+  email: yup.string().required("required Email"),
 });

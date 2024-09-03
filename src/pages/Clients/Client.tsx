@@ -1,14 +1,11 @@
-import { Grid } from '@mui/material'
-import { ClientDialog } from 'components/Dialog/ClientDialog'
-import { ScopeDialog } from 'components/Dialog/ScopeDialog'
-import { ClientTable } from 'components/Tables/ClientsTable'
-import { ScopeTable } from 'components/Tables/ScopeTable'
-import { WindowBar } from 'components/WindowUI/WindowBar'
-import { useAlert } from 'hooks/useAlert'
-import { useEffect, useState } from 'react'
-import { fetchAllClients } from 'services/ClientService'
-import { fetchAllScopes } from 'services/ScopeService'
-import { TButtonClickEvent, TClient, type TScope } from 'types/DataTypes'
+import { Grid } from "@mui/material";
+import { ClientDialog } from "components/Dialog/ClientDialog";
+import { ClientTable } from "components/Tables/ClientsTable";
+import { WindowBar } from "components/WindowUI/WindowBar";
+import { useAlert } from "hooks/useAlert";
+import { useEffect, useState } from "react";
+import { fetchAllClients } from "services/ClientService";
+import { TButtonClickEvent, TClient, type TScope } from "types/DataTypes";
 
 export const Client = () => {
   const [data, setData] = useState<TClient[]>([]);
@@ -17,42 +14,41 @@ export const Client = () => {
 
   // Fetch Initial Data
   useEffect(() => {
-    fetchAllScopsAsync();
-  }, [])
+    fetchAllClientsAsync();
+  }, []);
 
-  const fetchAllScopsAsync = async () => {
+  const fetchAllClientsAsync = async () => {
     try {
       const values = await fetchAllClients();
       setData(values);
-    }catch(error : any) {
+    } catch (error: any) {
       showAlert(error.message, error.severity, error.title);
     }
-  }
- 
-  const onNewButtonClick = (e : TButtonClickEvent) => {
-    e.preventDefault()
+  };
+
+  const onNewButtonClick = (e: TButtonClickEvent) => {
+    e.preventDefault();
     setOpenDialog(true);
-  }
+  };
 
   // Add the received data
-  const newRecordCallback = (record : TClient) => {
-    console.log("received data", record);
+  const newRecordCallback = (record: TClient) => {
     setData([...data, record]);
-    console.log("after receive", data);
-  }
+  };
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <WindowBar onNewButtonClick={onNewButtonClick} title='Client' />
+        <WindowBar onNewButtonClick={onNewButtonClick} title="Client" />
       </Grid>
       <Grid item xs={12}>
-        <ClientTable data={data} />  
-        <ClientDialog 
-          openDialog={openDialog} 
+        <ClientTable data={data} />
+        <ClientDialog
+          openDialog={openDialog}
           setOpenDialog={setOpenDialog}
-          newRecordCallback = {newRecordCallback} />
+          newRecordCallback={newRecordCallback}
+        />
       </Grid>
     </Grid>
-  )
-}
+  );
+};

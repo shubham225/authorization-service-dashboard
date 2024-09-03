@@ -6,7 +6,7 @@ import { TcolorMode, TColorModeContext } from "types/DataTypes";
 export const useMode = () => {
   const [mode, setMode] = useState<TcolorMode>("light");
 
-  const colorMode : TColorModeContext = useMemo(
+  const colorMode: TColorModeContext = useMemo(
     () => ({
       toggleColorMode: () =>
         setMode((prev) => (prev === "dark" ? "light" : "dark")),
@@ -16,5 +16,5 @@ export const useMode = () => {
 
   const theme = createTheme(themeSettings(mode));
 
-  return {theme, colorMode};
+  return { theme, colorMode };
 };

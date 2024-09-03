@@ -1,93 +1,116 @@
 export const scopeColumns = [
-    {
-        field: "id",
-        headerName: "ID"
-    },
-    {
-        field: "scope",
-        headerName: "Scope",
-        flex: 1
-    },
-    {
-        field: "description",
-        headerName: "Description",
-        flex: 1
-    }
-  ]
+  {
+    field: "id",
+    headerName: "ID",
+    minWidth: 270,
+  },
+  {
+    field: "scope",
+    headerName: "Scope",
+    minWidth: 400,
+  },
+  {
+    field: "description",
+    headerName: "Description",
+    flex: 1,
+  },
+];
+
+export const roleColumns = [
+  {
+    field: "id",
+    headerName: "ID",
+    minWidth: 270,
+  },
+  {
+    field: "role",
+    headerName: "Role",
+    minWidth: 400,
+  },
+  {
+    field: "description",
+    headerName: "Description",
+    flex: 1,
+  },
+];
 
 export const clientColumns = [
-    {
-        field: "client_id",
-        headerName: "Client ID",
-        minWidth: 150
-    },
-    {
-        field: "client_name",
-        headerName: "Client Name",
-        minWidth: 250
-    },
-    {
-        field: "authorization_grant_types",
-        headerName: "Authorization Grant Types",
-        minWidth: 300
-    },
-    {
-        field: "client_authentication_methods",
-        headerName: "Authorization Methods",
-        minWidth: 300
-    },
-    {
-        field: "redirect_uris",
-        headerName: "Redirect URIs",
-        minWidth: 300
-    },
-    {
-        field: "post_logout_redirect_uris",
-        headerName: "Post Logout Redirect URIs",
-        minWidth: 300
-    },
-    {
-        field: "scopes",
-        headerName: "Scopes",
-        minWidth: 300
-    }
-  ]
+  {
+    field: "clientId",
+    headerName: "Client ID",
+    minWidth: 250,
+  },
+  {
+    field: "clientName",
+    headerName: "Client Name",
+    minWidth: 250,
+  },
+  {
+    field: "authorizationGrantTypes",
+    headerName: "Authorization Grant Types",
+    minWidth: 300,
+  },
+  {
+    field: "clientAuthenticationMethods",
+    headerName: "Authorization Methods",
+    minWidth: 300,
+  },
+  {
+    field: "redirectUris",
+    headerName: "Redirect URIs",
+    minWidth: 300,
+  },
+  {
+    field: "postLogoutRedirectUris",
+    headerName: "Post Logout Redirect URIs",
+    minWidth: 300,
+  },
+  {
+    field: "scopes",
+    headerName: "Scopes",
+    minWidth: 300,
+  },
+];
 
-  export const roleColumns = [
-    {
-        field: "id",
-        headerName: "ID"
-    },
-    {
-        field: "role",
-        headerName: "Role",
-        flex: 1
-    },
-    {
-        field: "description",
-        headerName: "Description",
-        flex: 1
-    }
-  ]
-
-  export const userColumns = [
-    {
-        field: "id",
-        headerName: "ID"
-    },
-    {
-        field: "username",
-        headerName: "Username",
-        flex: 1
-    },
-    {
-        field: "email",
-        headerName: "E-Mail",
-        flex: 1
-    },
-    {
-        field: "mobile",
-        headerName: "Mobile",
-        flex: 1
-    }
-  ]
+export const userColumns = [
+  {
+    field: "id",
+    headerName: "ID",
+    minWidth: 270,
+  },
+  {
+    field: "username",
+    headerName: "Username",
+    minWidth: 250,
+  },
+  {
+    field: "email",
+    headerName: "E-Mail",
+    minWidth: 200,
+  },
+  {
+    field: "mobile",
+    headerName: "Mobile",
+    minWidth: 200,
+  },
+  {
+    field: "address",
+    headerName: "Address",
+    minWidth: 250,
+  },
+  {
+    field: "city",
+    headerName: "City",
+    minWidth: 100,
+  },
+  {
+    field: "country",
+    headerName: "Country",
+    minWidth: 100,
+  },
+  {
+    field: "roles",
+    headerName: "Roles",
+    minWidth: 250,
+  },
+];

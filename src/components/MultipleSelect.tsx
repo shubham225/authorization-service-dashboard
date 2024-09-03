@@ -21,7 +21,11 @@ const MenuProps = {
   },
 };
 
-function getStyles(name: string, personName?: readonly string[], theme?: Theme) {
+function getStyles(
+  name: string,
+  personName?: readonly string[],
+  theme?: Theme
+) {
   return {
     fontWeight:
       personName?.indexOf(name) === -1
@@ -33,22 +37,13 @@ function getStyles(name: string, personName?: readonly string[], theme?: Theme) 
 const MultipleSelect = (props: TMultiSelectProps) => {
   const theme = useTheme();
 
-  const {
-    id,
-    name,
-    value,
-    onChange,
-    onBlur,
-    error,
-    label,
-    margin,
-    enums,
-  } = props;
+  const { id, name, value, onChange, onBlur, error, label, margin, enums } =
+    props;
 
   return (
     <div>
       <FormControl fullWidth margin={margin}>
-        <InputLabel >{label}</InputLabel>
+        <InputLabel>{label}</InputLabel>
         <Select
           id={id}
           multiple

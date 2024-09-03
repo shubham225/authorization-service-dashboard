@@ -1,5 +1,1 @@
-export const Labels = () => {
-  return (
-    <div>Labels</div>
-  )
-}
+export const APP_NAME = "Admin Dashboard";

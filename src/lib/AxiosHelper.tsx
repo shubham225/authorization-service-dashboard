@@ -1,35 +1,32 @@
 import axios from "axios";
 import { THTTPMethod } from "types/DataTypes";
 
-const address = document.getElementById("httpPath")?.innerHTML || 'http://localhost:9000';
+const address =
+  window.location.origin ||
+  document.getElementById("httpPath")?.innerHTML;
 
-axios.defaults.baseURL = (address);
-axios.defaults.headers.post["Content-type"] = 'application/json'
+axios.defaults.baseURL = address;
+axios.defaults.headers.post["Content-type"] = "application/json";
 
-function request(method : THTTPMethod, url : string, data : Object) {
-    const tokenString = sessionStorage.getItem('token');
+function request<T>(method: THTTPMethod, url: string, data: any) {
+  const tokenString = sessionStorage.getItem("token");
+  let headers: any = {};
 
-    console.log("ADDR",axios.defaults.baseURL);
-    let headers = {};
-    
-    if(tokenString){
-        const userToken = JSON.parse(tokenString);
-        const token = userToken?.token;
-        if(token) headers = {"Authorization" : ("Bearer " + token)};
-    }
+  if (tokenString) {
+    const token = tokenString;
+    if (token) headers = { ...headers, Authorization: "Bearer " + token };
+  }
 
-    return axios(
-        {
-            method : method,
-            headers : headers,
-            url : url,
-            data : data
-        }
-    );
+  return axios<T>({
+    method: method,
+    headers: headers,
+    url: url,
+    data: data,
+  });
 }
 
 export function removeAuth() {
-    sessionStorage.removeItem("token");
+  sessionStorage.removeItem("token");
 }
 
 export default request;

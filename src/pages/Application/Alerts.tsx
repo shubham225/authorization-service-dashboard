@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const Alerts = () => {
-  return (
-    <div>Alerts</div>
-  )
-}
+  return <div>Alerts</div>;
+};

@@ -1,21 +1,22 @@
-import { TErrorBackend } from "types/DataTypes"
+import { TErrorBackend } from "types/DataTypes";
 
-export const getBackendErrorMessage = (error : any) : TErrorBackend => {
-    let errorM : TErrorBackend;
-    if(error.response) {
-        errorM = {
-            title: 'Error from Backend',
-            message : error.response.data.messsage,
-            severity : "error"
-        }
-    }else {
-        console.log(error);
-        errorM = {
-            title: error.code,
-            message : error.message,
-            severity : "error"
-        }
-    }
+export const getBackendErrorMessage = (error: any): TErrorBackend => {
+  let errorM: TErrorBackend;
+  if (error.response) {
+    errorM = {
+      title: "Error from Backend",
+      message: error.response.data.message,
+      severity: "error",
+    };
+  } else {
+    console.log(error);
+    errorM = {
+      title: error.code,
+      message: error.message,
+      severity: "error",
+    };
+  }
 
-    return errorM;
-}
+  console.log("error : ", error, errorM);
+  return errorM;
+};

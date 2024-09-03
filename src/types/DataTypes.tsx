@@ -43,17 +43,24 @@ export type TAuthGrantType =
 export type TClientAuthMethod = "client_secret_basic";
 
 export type TClient = {
-  client_id: string;
-  client_secret?: string;
-  client_name: string;
-  authorization_grant_types: TAuthGrantType[];
-  client_authentication_methods: TClientAuthMethod[];
-  redirect_uris: string[];
-  post_logout_redirect_uris: string[];
+  id: string;
+  clientId: string;
+  clientName: string;
+  clientSecret?: string;
+  authorizationGrantTypes: TAuthGrantType[];
+  clientAuthenticationMethods: TClientAuthMethod[];
+  redirectUris: string[];
+  postLogoutRedirectUris: string[];
   scopes: string[];
 };
 
-export type TClientRequest = Omit<TClient, "client_id">;
+export type TClientRequest = Omit<TClient, "id">;
+
+export type TClientCreateResp = {
+  id: string;
+  clientId: string;
+  clientSecret: string;
+};
 
 // Role
 export type TRole = {
@@ -68,12 +75,28 @@ export type TRoleReq = Omit<TRole, "id">;
 export type TUser = {
   id: number;
   username: string;
+  password?: string;
   email: string;
   mobile: string;
+  address: string;
+  city: string;
+  country: string;
   roles: string[];
 };
 
 export type TUserReq = Omit<TUser, "id">;
 
 // Common
-export type TFormRequestValues = TScopeReq | TClientRequest | TRoleReq | TUserReq;
+export type TFormRequestValues =
+  | TClient
+  | TScopeReq
+  | TClientRequest
+  | TRoleReq
+  | TUserReq;
+
+// API Response
+export type APIResponse<T> = {
+  code: number;
+  message: string;
+  payload: T;
+};

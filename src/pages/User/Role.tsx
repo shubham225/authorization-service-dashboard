@@ -1,11 +1,11 @@
-import { Grid } from '@mui/material'
-import { RoleDialog } from 'components/Dialog/RoleDialog'
-import { RoleTable } from 'components/Tables/RoleTable'
-import { WindowBar } from 'components/WindowUI/WindowBar'
-import { useAlert } from 'hooks/useAlert'
-import { useEffect, useState } from 'react'
-import { fetchAllRoles } from 'services/RoleService'
-import { TButtonClickEvent, TRole } from 'types/DataTypes'
+import { Grid } from "@mui/material";
+import { RoleDialog } from "components/Dialog/RoleDialog";
+import { RoleTable } from "components/Tables/RoleTable";
+import { WindowBar } from "components/WindowUI/WindowBar";
+import { useAlert } from "hooks/useAlert";
+import { useEffect, useState } from "react";
+import { fetchAllRoles } from "services/RoleService";
+import { TButtonClickEvent, TRole } from "types/DataTypes";
 
 export const Role = () => {
   const [data, setData] = useState<TRole[]>([]);
@@ -15,41 +15,42 @@ export const Role = () => {
   // Fetch Initial Data
   useEffect(() => {
     fetchAllRolesAsync();
-  }, [])
+  }, []);
 
   const fetchAllRolesAsync = async () => {
     try {
       const values = await fetchAllRoles();
-      setData(values);
-    }catch(error : any) {
+      const val: TRole[] = values;
+
+      if (val) setData(val);
+    } catch (error: any) {
       showAlert(error.message, error.severity, error.title);
     }
-  }
- 
-  const onNewButtonClick = (e : TButtonClickEvent) => {
-    e.preventDefault()
+  };
+
+  const onNewButtonClick = (e: TButtonClickEvent) => {
+    e.preventDefault();
     setOpenDialog(true);
-  }
+  };
 
   // Add the received data
-  const newRecordCallback = (record : TRole) => {
-    console.log("received data", record);
+  const newRecordCallback = (record: TRole) => {
     setData([...data, record]);
-    console.log("after receive", data);
-  }
+  };
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <WindowBar onNewButtonClick={onNewButtonClick} title='Role' />
+        <WindowBar onNewButtonClick={onNewButtonClick} title="Role" />
       </Grid>
       <Grid item xs={12}>
-        <RoleTable data={data} />  
+        <RoleTable data={data} />
         <RoleDialog
-          openDialog={openDialog} 
+          openDialog={openDialog}
           setOpenDialog={setOpenDialog}
-          newRecordCallback = {newRecordCallback} />
+          newRecordCallback={newRecordCallback}
+        />
       </Grid>
     </Grid>
-  )
-}
+  );
+};

@@ -1,81 +1,110 @@
 import { TextField } from "@mui/material";
 import MultipleSelect from "components/MultipleSelect";
-import { authorizationGrantType, clientAuthenticationMethods } from "constant/Enums";
+import {
+  authorizationGrantType,
+  clientAuthenticationMethods,
+} from "constant/Enums";
+import { useAlert } from "hooks/useAlert";
+import { useEffect, useState } from "react";
+import { fetchAllScopes } from "services/ScopeService";
 import { TClientFormProps } from "types/PropsTypes";
 
 export const ClientForm = (props: TClientFormProps) => {
   const { formik } = props;
+  const [scopesEnum, setScopesEnum] = useState<string[]>([]);
+  const { showAlert } = useAlert();
 
   // Read this from backend
-  const scopes = [
-    "client.write",
-    "client.read"
-  ];
+  useEffect(() => {
+    fetchAllScopsAsync();
+  }, []);
+
+  const fetchAllScopsAsync = async () => {
+    try {
+      const values = await fetchAllScopes();
+      const scopesData = values.map((scope) => scope.scope);
+      setScopesEnum(scopesData);
+    } catch (error: any) {
+      showAlert(error.message, error.severity, error.title);
+    }
+  };
 
   return (
     <>
       <TextField
         fullWidth
-        id="client_name"
-        name="client_name"
-        value={formik?.values.client_name}
+        id="clientName"
+        name="clientName"
+        value={formik?.values.clientName}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
-        error={!!formik?.touched.client_name && !!formik?.errors.client_name}
-        helperText={formik?.touched.client_name && formik?.errors.client_name}
+        error={!!formik?.touched.clientName && !!formik?.errors.clientName}
+        helperText={formik?.touched.clientName && formik?.errors.clientName}
         label="Client Name"
         type="input"
         margin="normal"
       />
-      <MultipleSelect 
-        id="authorization_grant_types"
-        name="authorization_grant_types"
-        value={formik?.values.authorization_grant_types}
+      <MultipleSelect
+        id="authorizationGrantTypes"
+        name="authorizationGrantTypes"
+        value={formik?.values.authorizationGrantTypes}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
-        error={!!formik?.touched.authorization_grant_types && !!formik?.errors.authorization_grant_types}
+        error={
+          !!formik?.touched.authorizationGrantTypes &&
+          !!formik?.errors.authorizationGrantTypes
+        }
         label="Authorization Grant Types"
         margin="normal"
         enums={authorizationGrantType}
       />
-      <MultipleSelect 
-        id="client_authentication_methods"
-        name="client_authentication_methods"
-        value={formik?.values.client_authentication_methods}
+      <MultipleSelect
+        id="clientAuthenticationMethods"
+        name="clientAuthenticationMethods"
+        value={formik?.values.clientAuthenticationMethods}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
-        error={!!formik?.touched.client_authentication_methods && !!formik?.errors.client_authentication_methods}
+        error={
+          !!formik?.touched.clientAuthenticationMethods &&
+          !!formik?.errors.clientAuthenticationMethods
+        }
         label="Authorization Methods"
         margin="normal"
         enums={clientAuthenticationMethods}
       />
       <TextField
         fullWidth
-        id="redirect_uris"
-        name="redirect_uris"
-        value={formik?.values.redirect_uris}
+        id="redirectUris"
+        name="redirectUris"
+        value={formik?.values.redirectUris}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
-        error={!!formik?.touched.redirect_uris && !!formik?.errors.redirect_uris}
-        helperText={formik?.touched.redirect_uris && formik?.errors.redirect_uris}
+        error={!!formik?.touched.redirectUris && !!formik?.errors.redirectUris}
+        helperText={formik?.touched.redirectUris && formik?.errors.redirectUris}
         label="Redirect URIs"
         type="input"
         margin="normal"
       />
       <TextField
         fullWidth
-        id="post_logout_redirect_uris"
-        name="post_logout_redirect_uris"
-        value={formik?.values.post_logout_redirect_uris}
+        id="postLogoutRedirectUris"
+        name="postLogoutRedirectUris"
+        value={formik?.values.postLogoutRedirectUris}
         onChange={formik?.handleChange}
         onBlur={formik?.handleBlur}
-        error={!!formik?.touched.post_logout_redirect_uris && !!formik?.errors.post_logout_redirect_uris}
-        helperText={formik?.touched.post_logout_redirect_uris && formik?.errors.post_logout_redirect_uris}
+        error={
+          !!formik?.touched.postLogoutRedirectUris &&
+          !!formik?.errors.postLogoutRedirectUris
+        }
+        helperText={
+          formik?.touched.postLogoutRedirectUris &&
+          formik?.errors.postLogoutRedirectUris
+        }
         label="Post Logout Redirect URIs"
         type="input"
         margin="normal"
       />
-      <MultipleSelect 
+      <MultipleSelect
         id="scopes"
         name="scopes"
         value={formik?.values.scopes}
@@ -84,7 +113,7 @@ export const ClientForm = (props: TClientFormProps) => {
         error={!!formik?.touched.scopes && !!formik?.errors.scopes}
         label="Scopes"
         margin="normal"
-        enums={scopes}
+        enums={scopesEnum}
       />
     </>
   );

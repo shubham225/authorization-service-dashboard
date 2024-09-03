@@ -1,6 +1,4 @@
 import {
-  AppBar,
-  Avatar,
   Box,
   Button,
   ButtonGroup,
@@ -9,7 +7,6 @@ import {
   ListItemIcon,
   Menu,
   MenuItem,
-  Toolbar,
   Typography,
   useTheme,
 } from "@mui/material";
@@ -69,11 +66,13 @@ const Appbar = () => {
   };
 
   return (
-    <Box sx={{
-        position: 'fixed',
+    <Box
+      sx={{
+        position: "fixed",
         width: "-webkit-fill-available",
-        backdropFilter: "blur(5px)"
-    }}>
+        backdropFilter: "blur(5px)",
+      }}
+    >
       <Box display="flex" justifyContent="space-between" p={1} mt={1}>
         <Box display="flex" mx={1}>
           <Typography variant="h5" color={colors.primary[200]}>

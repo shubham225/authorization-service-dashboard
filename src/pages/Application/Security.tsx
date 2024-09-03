@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const Security = () => {
-  return (
-    <div>Security</div>
-  )
-}
+  return <div>Security</div>;
+};

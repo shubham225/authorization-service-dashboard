@@ -1,7 +1,7 @@
-import React from 'react'
-import SignIn from 'components/Login'
-import { Container } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import SignIn from "components/Login";
+import { Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const navigateTo = useNavigate();
@@ -10,21 +10,22 @@ export const Login = () => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('email'),
-      password: data.get('password')
+      email: data.get("email"),
+      password: data.get("password"),
     });
     navigateTo("/home");
   };
 
   return (
-      <Container 
-        maxWidth='xs'
-        sx={{ 
-          height: '100%',
-          display: 'flex',
-          mt: '100px'
-        }}>
-          <SignIn handleSubmit={handleSubmit} />
-      </Container>
-  )
-}
+    <Container
+      maxWidth="xs"
+      sx={{
+        height: "100%",
+        display: "flex",
+        mt: "100px",
+      }}
+    >
+      <SignIn handleSubmit={handleSubmit} />
+    </Container>
+  );
+};

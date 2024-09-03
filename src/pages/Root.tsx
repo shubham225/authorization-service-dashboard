@@ -14,12 +14,12 @@ export const Root = () => {
     <Box display="flex" sx={{ height: "100%", width: "100%" }}>
       <Outlet />
       <AlertSnackBar
-            open= {appContext.alert.open}
-            message= {appContext.alert.message}
-            severity= {appContext.alert.severity}
-            title={appContext.alert.title}
-            handleClose={() => closeAlert()}
-          />
+        open={appContext.alert.open}
+        message={appContext.alert.message}
+        severity={appContext.alert.severity}
+        title={appContext.alert.title}
+        handleClose={() => closeAlert()}
+      />
     </Box>
   );
 };

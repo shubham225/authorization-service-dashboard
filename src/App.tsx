@@ -10,7 +10,7 @@ function App() {
       <AppContextProvider>
         <CssBaseline />
         <div className="app">
-            <RouterProvider router={Router} />
+          <RouterProvider router={Router} />
         </div>
       </AppContextProvider>
     </ColorModeContextProvider>

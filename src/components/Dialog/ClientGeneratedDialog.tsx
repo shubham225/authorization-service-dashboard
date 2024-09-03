@@ -1,18 +1,27 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, styled, Typography } from '@mui/material';
-import React from 'react'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  styled,
+  Typography,
+} from "@mui/material";
+import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import { TClientCreatedDialogProps } from 'types/PropsTypes';
+import { TClientCreatedDialogProps } from "types/PropsTypes";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
+  "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
   },
-  '& .MuiDialogActions-root': {
+  "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
   },
 }));
 
-const ClientGeneratedDialog = (props : TClientCreatedDialogProps) => {
+const ClientGeneratedDialog = (props: TClientCreatedDialogProps) => {
   const { client, open, setOpen } = props;
 
   const handleClose = () => {
@@ -21,10 +30,7 @@ const ClientGeneratedDialog = (props : TClientCreatedDialogProps) => {
 
   return (
     <React.Fragment>
-      <BootstrapDialog
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
+      <BootstrapDialog aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
           Client Generated
         </DialogTitle>
@@ -32,7 +38,7 @@ const ClientGeneratedDialog = (props : TClientCreatedDialogProps) => {
           aria-label="close"
           onClick={handleClose}
           sx={{
-            position: 'absolute',
+            position: "absolute",
             right: 8,
             top: 8,
             color: (theme) => theme.palette.grey[500],
@@ -41,21 +47,19 @@ const ClientGeneratedDialog = (props : TClientCreatedDialogProps) => {
           <CloseIcon />
         </IconButton>
         <DialogContent dividers>
+          <Typography gutterBottom>Client ID : {client.clientId}</Typography>
           <Typography gutterBottom>
-            Client ID : {client.client_id}
-          </Typography>
-          <Typography gutterBottom>
-            Client Secret : {client?.client_secret}
+            Client Secret : {client?.clientSecret}
           </Typography>
         </DialogContent>
-        <DialogActions >
-          <Button variant='contained' autoFocus onClick={handleClose}>
+        <DialogActions>
+          <Button variant="contained" autoFocus onClick={handleClose}>
             Ok
           </Button>
         </DialogActions>
       </BootstrapDialog>
     </React.Fragment>
   );
-}
+};
 
-export default ClientGeneratedDialog
+export default ClientGeneratedDialog;
