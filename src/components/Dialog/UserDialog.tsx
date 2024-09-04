@@ -29,7 +29,7 @@ export const UserDialog = (props: TUserDialogProps) => {
   };
 
   const onCloseButtonClick = (e: TButtonClickEvent) => {
-    console.log("Close Clicked...");
+    // TODO : some operation to perform on close
   };
 
   return (

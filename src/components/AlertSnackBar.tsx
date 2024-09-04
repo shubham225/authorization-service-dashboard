@@ -8,7 +8,7 @@ function AlertSnackBar(props: TAlertSnackbarProps) {
     <div>
       <Snackbar
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={5000}
         onClose={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
         sx={{ mt: 3, width: "350px" }}

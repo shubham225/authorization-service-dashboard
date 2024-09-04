@@ -11,6 +11,7 @@ import {
   TRoleReq,
   TUser,
   TUserReq,
+  TChangePassword,
 } from "./DataTypes";
 import { FormikProps } from "formik";
 
@@ -139,4 +140,20 @@ export type TUserDialogProps = {
 
 export type TUserFormProps = {
   formik?: FormikProps<TUserReq>;
+};
+
+export type TDashboardCardProps = {
+  title: string;
+  value: string;
+  subvalue?: string;
+  footer?: string;
+};
+
+export type TChangePasswordDialog = {
+  openDialog: boolean;
+  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export type TChangePasswordFormProps = {
+  formik?: FormikProps<TChangePassword>;
 };

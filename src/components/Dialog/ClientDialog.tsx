@@ -45,13 +45,12 @@ export const ClientDialog = (props: TClientDialogProps) => {
           ? values?.postLogoutRedirectUris.split(",")
           : values?.postLogoutRedirectUris;
 
-      console.log("Creating new Record", values);
       createNewClientAsync(values);
     }
   };
 
   const onCloseButtonClick = (e: TButtonClickEvent) => {
-    showAlert("Close Button has been clicked", "error", "Action Performed");
+    // TODO : some operation to perform on close
   };
 
   return (

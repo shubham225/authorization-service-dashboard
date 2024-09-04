@@ -92,11 +92,40 @@ export type TFormRequestValues =
   | TScopeReq
   | TClientRequest
   | TRoleReq
-  | TUserReq;
+  | TUserReq
+  | TChangePassword;
 
 // API Response
 export type APIResponse<T> = {
   code: number;
   message: string;
   payload: T;
+};
+
+export type TChangePassword = {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+};
+
+export type TMetrics = {
+  httpRequestCount: string;
+  freeDiskSpace: string;
+  totalDiskSpace: string;
+  userCount: string;
+  clientCount: string;
+};
+
+export type TMetricsResponse = {
+  measurements: TMeasurement[];
+};
+
+export type TMeasurement = {
+  statistic: string;
+  value: number;
+};
+
+export type TDataMetricsCount = {
+  userCount: number;
+  clientCount: number;
 };

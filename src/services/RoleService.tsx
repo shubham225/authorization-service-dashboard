@@ -7,7 +7,7 @@ export function fetchAllRoles(): Promise<TRole[]> {
     try {
       const response = await request<APIResponse<TRole[]>>(
         "GET",
-        "/api/V1/role/",
+        "/api/V1/roles",
         {}
       );
       resolve(response.data.payload);
@@ -23,7 +23,7 @@ export function createNewRole(data: TRoleReq): Promise<TRole> {
     try {
       const response = await request<APIResponse<TRole>>(
         "POST",
-        "/api/V1/role/",
+        "/api/V1/roles/",
         data
       );
       resolve(response.data.payload);

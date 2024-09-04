@@ -12,7 +12,7 @@ export function fetchAllScopes(): Promise<TScope[]> {
     try {
       const response = await request<APIResponse<TScope[]>>(
         "GET",
-        "/api/V1/scope/",
+        "/api/V1/scopes",
         {}
       );
       resolve(response.data.payload);
@@ -28,7 +28,7 @@ export function createNewScope(data: TScopeReq): Promise<TScope> {
     try {
       const response = await request<APIResponse<TScope>>(
         "POST",
-        "/api/V1/scope/",
+        "/api/V1/scopes",
         data
       );
       resolve(response.data.payload);

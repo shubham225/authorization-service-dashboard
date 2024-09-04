@@ -25,3 +25,9 @@ export const userSchema = yup.object().shape({
   password: yup.string().min(4).required("required"),
   email: yup.string().required("required Email"),
 });
+
+export const changePasswordSchema = yup.object().shape({
+  oldPassword: yup.string().required("required"),
+  newPassword: yup.string().min(8).required("password must be min 8 characters"),
+  confirmPassword: yup.string().oneOf([yup.ref('newPassword')], "Passwords don't match").required('Confirm Password is required'),
+});

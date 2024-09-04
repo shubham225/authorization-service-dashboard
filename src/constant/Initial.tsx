@@ -1,6 +1,7 @@
 import {
   TAlert,
   TAppContext,
+  TChangePassword,
   TClientRequest,
   TRoleReq,
   TScopeReq,
@@ -41,4 +42,10 @@ export const initUser: TUserReq = {
   city: "",
   country: "",
   roles: [],
+};
+
+export const initChangePasswd: TChangePassword = {
+  oldPassword: "",
+  newPassword: "",
+  confirmPassword: "",
 };

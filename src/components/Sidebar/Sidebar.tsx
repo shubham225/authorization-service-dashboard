@@ -62,7 +62,15 @@ export const Sidebar = () => {
       variant="permanent"
       anchor="left"
     >
-      <Box display="flex" my={1} justifyContent="center">
+      <Box
+        display="flex"
+        my={1}
+        justifyContent="center"
+        onClick={(e) => {
+          e.preventDefault();
+          navigateTo("/home");
+        }}
+      >
         <img
           src={
             theme.palette.mode === "dark"

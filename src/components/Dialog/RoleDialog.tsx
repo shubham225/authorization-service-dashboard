@@ -29,7 +29,7 @@ export const RoleDialog = (props: TRoleDialogProps) => {
   };
 
   const onCloseButtonClick = (e: TButtonClickEvent) => {
-    console.log("Close Clicked...");
+    // TODO : some operation to perform on close
   };
 
   return (

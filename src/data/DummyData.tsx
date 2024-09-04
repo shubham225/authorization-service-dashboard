@@ -16,7 +16,8 @@ export const scopeData: TScope[] = [
 export const clientData: TClient[] = [
   {
     id: "fff",
-    clientId: "fffffff",
+    clientId: "fffffff-ewfbwevy-ee",
+    clientSecret: "qwert-wdqwydgqwyfcey-efhqebhfcqj",
     clientName: "my-client",
     authorizationGrantTypes: ["refresh_token", "client_credentials"],
     clientAuthenticationMethods: ["client_secret_basic"],

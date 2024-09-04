@@ -29,8 +29,7 @@ export const ScopeDialog = (props: TScopeDialogProps) => {
   };
 
   const onCloseButtonClick = (e: TButtonClickEvent) => {
-    console.log("tetst");
-    showAlert("Close Button has been clicked", "error", "Action Performed");
+    // TODO : some operation to perform on close
   };
 
   return (
