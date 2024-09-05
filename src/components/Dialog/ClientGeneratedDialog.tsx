@@ -45,11 +45,11 @@ const ClientGeneratedDialog = (props: TClientCreatedDialogProps) => {
 
   const handleClickCopyClientID = () => {
     navigator.clipboard.writeText(client.clientId);
-    showAlert("Client ID copied to clipboard", "success", "Copied");
+    showAlert("Client ID copied to clipboard", "success", "Copied", 800);
   };
   const handleClickCopySecret = () => {
     navigator.clipboard.writeText(client.clientSecret || "");
-    showAlert("Client Secret copied to clipboard", "success", "Copied");
+    showAlert("Client Secret copied to clipboard", "success", "Copied", 800);
   };
 
   return (

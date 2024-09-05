@@ -11,6 +11,7 @@ export type TAlert = {
   message: string;
   severity: TAlertSeverity;
   title: string;
+  duration: number;
 };
 
 export type TErrorBackend = Omit<TAlert, "open">;

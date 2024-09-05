@@ -2,13 +2,13 @@ import { Alert, AlertTitle, Snackbar } from "@mui/material";
 import { TAlertSnackbarProps } from "types/PropsTypes";
 
 function AlertSnackBar(props: TAlertSnackbarProps) {
-  const { open, severity, message, title, handleClose } = props;
+  const { open, severity, message, title, duration, handleClose } = props;
 
   return (
     <div>
       <Snackbar
         open={open}
-        autoHideDuration={5000}
+        autoHideDuration={duration}
         onClose={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
         sx={{ mt: 3, width: "350px" }}

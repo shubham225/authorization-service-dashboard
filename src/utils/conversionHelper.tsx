@@ -7,12 +7,14 @@ export const getBackendErrorMessage = (error: any): TErrorBackend => {
       title: "Error - " + (error.response.data.code || error.code),
       message: error.response.data.message || error.message,
       severity: "error",
+      duration: 5000,
     };
   } else {
     errorM = {
       title: error.code,
       message: error.message,
       severity: "error",
+      duration: 5000,
     };
   }
   return errorM;

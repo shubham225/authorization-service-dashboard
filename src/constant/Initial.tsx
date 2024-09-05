@@ -15,6 +15,7 @@ export const initAlert: TAlert = {
   message: "",
   severity: "error",
   title: "",
+  duration: 5000,
 };
 
 export const initAppContext: TAppContext = {

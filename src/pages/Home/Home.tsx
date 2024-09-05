@@ -108,7 +108,7 @@ export const Home = () => {
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          <Paper elevation={3} sx={{ height: "500px" }}>
+          <Paper elevation={3} sx={{ height: "480px" }}>
             <LineChart
               dataset={dataset}
               xAxis={[{ dataKey: "x" }]}

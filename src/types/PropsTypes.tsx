@@ -55,6 +55,7 @@ export type TAlertSnackbarProps = {
   message: string;
   severity: TAlertSeverity;
   title: string;
+  duration: number;
   handleClose: () => void;
 };
 

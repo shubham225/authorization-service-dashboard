@@ -23,7 +23,7 @@ export function createNewRole(data: TRoleReq): Promise<TRole> {
     try {
       const response = await request<APIResponse<TRole>>(
         "POST",
-        "/api/V1/roles/",
+        "/api/V1/roles",
         data
       );
       resolve(response.data.payload);

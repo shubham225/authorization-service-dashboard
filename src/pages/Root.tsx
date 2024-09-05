@@ -18,6 +18,7 @@ export const Root = () => {
         message={appContext.alert.message}
         severity={appContext.alert.severity}
         title={appContext.alert.title}
+        duration={appContext.alert.duration}
         handleClose={() => closeAlert()}
       />
     </Box>

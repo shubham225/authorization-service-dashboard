@@ -10,13 +10,15 @@ export const useAlert = () => {
   const showAlert = (
     message: string,
     type: TAlertSeverity,
-    title: string
+    title: string,
+    duration?: number
   ): void => {
     let alert: TAlert = {
       open: true,
       message: message,
       severity: type ? type : "error",
       title: title,
+      duration: duration ? duration : 5000,
     };
 
     if (setAppContext != null) {
