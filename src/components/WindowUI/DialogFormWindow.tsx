@@ -5,6 +5,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Grow,
   IconButton,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -66,6 +67,7 @@ export const DialogFormWindow = (props: TDialogWindowProps) => {
       >
         {(formik) => (
           <BootstrapDialog
+            TransitionComponent={Grow}
             open={open}
             maxWidth={maxWidth ? maxWidth : "md"}
             PaperProps={{

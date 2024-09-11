@@ -1,9 +1,6 @@
 import { DialogFormWindow } from "../WindowUI/DialogFormWindow";
 import { TClientDialogProps } from "types/PropsTypes";
-import {
-  TButtonClickEvent,
-  TClient,
-} from "types/DataTypes";
+import { TButtonClickEvent, TClient } from "types/DataTypes";
 import SaveIcon from "@mui/icons-material/Save";
 import { useAlert } from "hooks/useAlert";
 import { clientSchema } from "types/YupSchema";

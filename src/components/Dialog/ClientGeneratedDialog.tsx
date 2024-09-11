@@ -14,6 +14,7 @@ import {
   styled,
   Tooltip,
   Typography,
+  Zoom,
 } from "@mui/material";
 import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
@@ -63,6 +64,7 @@ const ClientGeneratedDialog = (props: TClientCreatedDialogProps) => {
             width: "-webkit-fill-available",
           },
         }}
+        TransitionComponent={Zoom}
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
           Client Generated
