@@ -11,6 +11,7 @@ import { Client } from "./Clients/Client";
 import { Scope } from "./Clients/Scope";
 import { User } from "./User/User";
 import { Role } from "./User/Role";
+import MyAccount from "./Account/MyAccount";
 
 export const Router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const Router = createBrowserRouter([
           {
             path: "/role",
             element: <Role />,
+          },
+          {
+            path: "/myAccount",
+            element: <MyAccount />,
           },
         ],
       },

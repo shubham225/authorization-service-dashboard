@@ -62,9 +62,9 @@ export const userData: TUser[] = [
     username: "ADMIN",
     email: "admin@gmail.com",
     mobile: "9876543210",
-    address: "",
-    city: "",
-    country: "",
+    address: "abcdefg",
+    city: "pune",
+    country: "city",
     roles: ["ADMIN", "USER"],
   },
   {
