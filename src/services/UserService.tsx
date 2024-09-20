@@ -71,3 +71,19 @@ export function changePassword(data: TChangePassword): Promise<string> {
     }
   });
 }
+
+export function fetchUserByLogin(): Promise<TUser> {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await request<APIResponse<TUser>>(
+        "GET",
+        "/api/V1/users/login",
+        {}
+      );
+      resolve(response.data.payload);
+    } catch (error: any) {
+      let errorM: TErrorBackend = getBackendErrorMessage(error);
+      reject(errorM);
+    }
+  });
+}

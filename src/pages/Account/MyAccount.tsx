@@ -1,97 +1,104 @@
 import { Avatar, Box, Chip, Grid, TextField } from "@mui/material";
-import React from "react";
+import { useEffect, useState } from "react";
 import Face6Icon from "@mui/icons-material/Face6";
-import MultipleSelect from "components/MultipleSelect";
 import { TUser } from "types/DataTypes";
-import { userData } from "data/DummyData";
+import { fetchUserByLogin } from "services/UserService";
+import { useAlert } from "hooks/useAlert";
+import { initUserData } from "constant/Initial";
 
 const MyAccount = () => {
-  const userDetail: TUser = userData[0];
+  const [data, setData] = useState<TUser>(initUserData);
+  const { showAlert } = useAlert();
 
+  // Fetch Initial Data
+  useEffect(() => {
+    fetchUserByLoginAsync();
+  }, []);
+
+  const fetchUserByLoginAsync = async () => {
+    try {
+      const values = await fetchUserByLogin();
+      setData(values);
+    } catch (error: any) {
+      showAlert(error.message, error.severity, error.title);
+    }
+  };
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} >
-        <Box display="flex" width= "-webkit-fill-available" justifyContent="center">
-      <Avatar sx={{ width: 100, height: 100 }}>
-        <Face6Icon sx={{ width: 80, height: 80 }} />
-      </Avatar>
+      <Grid item xs={12}>
+        <Box
+          display="flex"
+          width="-webkit-fill-available"
+          justifyContent="center"
+        >
+          <Avatar sx={{ width: 100, height: 100 }}>
+            <Face6Icon sx={{ width: 80, height: 80 }} />
+          </Avatar>
         </Box>
       </Grid>
-      <Grid item xs={6} >
+      <Grid item xs={6}>
         <TextField
           fullWidth
-          disabled
           id="username"
-          name="username"
-          value={userDetail.username}
+          value={data.username}
           label="Username"
-          type="input"
+          inputProps={{ readOnly: true }}
           margin="normal"
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
           fullWidth
-          disabled
           id="email"
-          name="email"
-          value={userDetail.email}
+          value={data.email}
           label="E-Mail"
-          type="input"
           margin="normal"
+          inputProps={{ readOnly: true }}
         />
       </Grid>
-      <Grid item xs={12} >
-      <TextField
-        fullWidth
-        disabled
-        id="address"
-        name="address"
-        value={userDetail.address}
-        label="Address"
-        type="input"
-        margin="normal"
-      />
+      <Grid item xs={12}>
+        <TextField
+          fullWidth
+          id="address"
+          value={data.address}
+          label="Address"
+          margin="normal"
+          inputProps={{ readOnly: true }}
+        />
       </Grid>
       <Grid item xs={4}>
         <TextField
           fullWidth
-          disabled
           id="city"
-          name="city"
-          value={userDetail.city}
+          value={data.city}
           label="City"
-          type="input"
           margin="normal"
+          inputProps={{ readOnly: true }}
         />
       </Grid>
       <Grid item xs={4}>
         <TextField
           fullWidth
-          disabled
           id="country"
-          name="country"
-          value={userDetail.country}
+          value={data.country}
           label="Country"
-          type="input"
           margin="normal"
+          inputProps={{ readOnly: true }}
         />
       </Grid>
       <Grid item xs={4}>
         <TextField
           fullWidth
-          disabled
           id="mobile"
-          name="mobile"
-          value={userDetail.mobile}
+          value={data.mobile}
           label="Mobile"
-          type="input"
           margin="normal"
+          inputProps={{ readOnly: true }}
         />
       </Grid>
-      {userDetail.roles.map((value) => (
-        <Grid item >
-        <Chip color="success" key={value} label={value} />
+      {data.roles.map((value) => (
+        <Grid item>
+          <Chip color="primary" variant="outlined" key={value} label={value} />
         </Grid>
       ))}
     </Grid>

@@ -5,6 +5,7 @@ import {
   TClientRequest,
   TRoleReq,
   TScopeReq,
+  TUser,
   TUserReq,
 } from "types/DataTypes";
 
@@ -49,4 +50,15 @@ export const initChangePasswd: TChangePassword = {
   oldPassword: "",
   newPassword: "",
   confirmPassword: "",
+};
+
+export const initUserData: TUser = {
+  id: 1234,
+  username: "",
+  email: "",
+  mobile: "",
+  address: "",
+  city: "",
+  country: "",
+  roles: [],
 };
