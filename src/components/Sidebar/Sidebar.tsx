@@ -23,7 +23,7 @@ import { DRAWER_WIDTH as drawerWidth } from "constant/Style";
 import { colorTokens } from "theme";
 
 const logoStyle = {
-  width: "160px",
+  width: "135px",
   height: "auto",
   cursor: "pointer",
 };

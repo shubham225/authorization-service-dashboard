@@ -1,0 +1,5 @@
+Color Combination used for Logo:
+
+#333333
+#AEFFDE
+#E4F1FF
