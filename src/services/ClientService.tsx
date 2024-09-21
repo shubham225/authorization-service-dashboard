@@ -54,3 +54,19 @@ export function getClientCount(data: TClientRequest): Promise<number> {
     }
   });
 }
+
+export function regenerateClientSecret(clientId: string): Promise<TClient> {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await request<APIResponse<TClient>>(
+        "PUT",
+        "/api/V1/clients/regenerateSecret/" + clientId,
+        {}
+      );
+      resolve(response.data.payload);
+    } catch (error: any) {
+      let errorM: TErrorBackend = getBackendErrorMessage(error);
+      reject(errorM);
+    }
+  });
+}

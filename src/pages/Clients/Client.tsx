@@ -5,7 +5,7 @@ import { WindowBar } from "components/WindowUI/WindowBar";
 import { useAlert } from "hooks/useAlert";
 import { useEffect, useState } from "react";
 import { fetchAllClients } from "services/ClientService";
-import { TButtonClickEvent, TClient, type TScope } from "types/DataTypes";
+import { TButtonClickEvent, TClient } from "types/DataTypes";
 
 export const Client = () => {
   const [data, setData] = useState<TClient[]>([]);
@@ -15,7 +15,7 @@ export const Client = () => {
   // Fetch Initial Data
   useEffect(() => {
     fetchAllClientsAsync();
-  }, []);
+  });
 
   const fetchAllClientsAsync = async () => {
     try {

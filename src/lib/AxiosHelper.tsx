@@ -2,8 +2,7 @@ import axios from "axios";
 import { THTTPMethod } from "types/DataTypes";
 
 const address =
-  window.location.origin ||
-  document.getElementById("httpPath")?.innerHTML;
+  window.location.origin || document.getElementById("httpPath")?.innerHTML;
 
 axios.defaults.baseURL = address;
 axios.defaults.headers.post["Content-type"] = "application/json";

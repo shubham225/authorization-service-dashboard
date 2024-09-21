@@ -1,4 +1,6 @@
-export const scopeColumns = [
+import { GridColDef } from "@mui/x-data-grid";
+
+export const scopeColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "ID",
@@ -16,7 +18,7 @@ export const scopeColumns = [
   },
 ];
 
-export const roleColumns = [
+export const roleColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "ID",
@@ -34,7 +36,7 @@ export const roleColumns = [
   },
 ];
 
-export const clientColumns = [
+export const clientColumns: GridColDef[] = [
   {
     field: "clientId",
     headerName: "Client ID",
@@ -72,7 +74,7 @@ export const clientColumns = [
   },
 ];
 
-export const userColumns = [
+export const userColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "ID",
