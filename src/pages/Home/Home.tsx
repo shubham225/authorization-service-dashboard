@@ -70,8 +70,8 @@ export const Home = () => {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={3}>
-          <Paper elevation={3} sx={{ height: "200px" }}>
+        <Grid item xs={12} md={3}>
+          <Paper elevation={1} sx={{ height: "200px" }}>
             <DashboardCard
               title="Total User Count"
               value={metrics?.userCount || "0"}
@@ -79,8 +79,8 @@ export const Home = () => {
             />
           </Paper>
         </Grid>
-        <Grid item xs={3}>
-          <Paper elevation={3} sx={{ height: "200px" }}>
+        <Grid item xs={12} md={3}>
+          <Paper elevation={1} sx={{ height: "200px" }}>
             <DashboardCard
               title="Total Client Count"
               value={metrics?.clientCount || "0"}
@@ -88,8 +88,8 @@ export const Home = () => {
             />
           </Paper>
         </Grid>
-        <Grid item xs={3}>
-          <Paper elevation={3} sx={{ height: "200px" }}>
+        <Grid item xs={12} md={3}>
+          <Paper elevation={1} sx={{ height: "200px" }}>
             <DashboardCard
               title="Total HTTP Requests"
               value={metrics?.httpRequestCount || "0"}
@@ -97,8 +97,8 @@ export const Home = () => {
             />
           </Paper>
         </Grid>
-        <Grid item xs={3}>
-          <Paper elevation={3} sx={{ height: "200px" }}>
+        <Grid item xs={12} md={3}>
+          <Paper elevation={1} sx={{ height: "200px" }}>
             <DashboardCard
               title="Available Disk Space"
               value={metrics?.freeDiskSpace || "0 GB"}
@@ -108,7 +108,7 @@ export const Home = () => {
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          <Paper elevation={3} sx={{ height: "480px" }}>
+          <Paper elevation={1} sx={{ height: "480px" }}>
             <LineChart
               dataset={dataset}
               xAxis={[{ dataKey: "x" }]}
