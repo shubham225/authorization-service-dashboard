@@ -15,7 +15,7 @@ export const Client = () => {
   // Fetch Initial Data
   useEffect(() => {
     fetchAllClientsAsync();
-  });
+  }, []);
 
   const fetchAllClientsAsync = async () => {
     try {
