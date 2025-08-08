@@ -6,14 +6,14 @@
 [![Yarn](https://img.shields.io/badge/Yarn-1.22%2B-blue)](https://yarnpkg.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE.md)
 
-A modern React-based dashboard for the [OAuth2 Authorization Service Backend](https://github.com/shubham225/authorization-service).  
 This dashboard provides a clean, user-friendly interface to manage **user authentication, client registration, and account settings**.
 
+> 🚀 A modern **React-based** dashboard for the [OAuth2 Authorization Service Backend](https://github.com/shubham225/authorization-service), built using **React** and **Material UI**.
 
 
 ## ✨ Features
 - **User Authentication** — Login, register, and manage accounts securely.
-- **Client Management** — Register OAuth2 clients and view credentials.
+- **Client Management** — Register OAuth2.0 clients and view credentials.
 - **Responsive UI** — Fully optimized for desktop and mobile.
 - **Dark Mode** — Seamless theme switching.
 - **Real-Time Form Validation** — Improve user experience and prevent errors.
